@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7253ef86-496f-4602-861f-e41926c1695a" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.travis.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.travis.yml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -116,7 +115,8 @@
     <MESSAGE value="100% Coverage&#10;&#10;Integer and Double Implementation" />
     <MESSAGE value="add badges and only use newest version of go" />
     <MESSAGE value="fix build command in travis ci config" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix build command in travis ci config" />
+    <MESSAGE value="test with coveralls" />
+    <option name="LAST_COMMIT_MESSAGE" value="test with coveralls" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

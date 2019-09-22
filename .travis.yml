@@ -6,8 +6,8 @@ notifications:
   email: markusgilg@outlook.de
 
 install:
-  go get golang.org/x/tools/cmd/cover
-  go get github.com/mattn/goveralls
+  - go get golang.org/x/tools/cmd/cover
+  - go get github.com/mattn/goveralls
 
 script:
   go test -v -covermode=count -coverprofile=coverage.out
@@ -15,7 +15,7 @@ script:
 
 jobs:
   include:
-    - stage: build
-      script: go build ./...
     - stage: test
       script: go test -v ./... -coverprofile=gotools.coverprofile
+    - stage: build
+    script: go build ./...
