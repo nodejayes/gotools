@@ -2,22 +2,26 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7253ef86-496f-4602-861f-e41926c1695a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.travis.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/types/integer/checks.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/types/integer/conversion.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/types/integer/math.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/types/integer/statics.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/types/integer/types.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/types/double/double_test.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.coveralls.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gotools.coverprofile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/types/double.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/types/integer.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/types/integer_test.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/types/checks.go" beforeDir="false" afterPath="$PROJECT_DIR$/src/types/double/checks.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/types/conversion.go" beforeDir="false" afterPath="$PROJECT_DIR$/src/types/double/conversion.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/types/math.go" beforeDir="false" afterPath="$PROJECT_DIR$/src/types/double/math.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/types/rounding.go" beforeDir="false" afterPath="$PROJECT_DIR$/src/types/double/rounding.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/types/statics.go" beforeDir="false" afterPath="$PROJECT_DIR$/src/types/double/statics.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/types/types.go" beforeDir="false" afterPath="$PROJECT_DIR$/src/types/double/types.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/types/double_test.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/types/integer_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/test/types/integer/integer_test.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.travis.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.travis.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/types/double/checks.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/types/double/conversion.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/types/double/math.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/types/double/rounding.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/types/double/statics.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/types/double/types.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/types/integer/checks.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/types/integer/conversion.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/types/integer/math.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/types/integer/statics.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/types/integer/types.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/types/double/double_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/types/double_test.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/types/integer/integer_test.go" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -26,7 +30,14 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageViewManager">
-    <option name="myElementSize" value="356" />
+    <option name="myElementSize" value="503" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Go File" />
+      </list>
+    </option>
   </component>
   <component name="GOROOT" path="C:\Go" />
   <component name="Git.Settings">
@@ -38,19 +49,22 @@
   </component>
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="DefaultGoTemplateProperty" value="Go File" />
     <property name="GO_FMT" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="go.import.settings.migrated" value="true" />
     <property name="go.sdk.automatically.set" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/types/double" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/test" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\marku\go\src\github.com\nodejayes\gotools" />
+      <recent name="C:\Users\marku\go\src\github.com\nodejayes\gotools\src\types" />
+      <recent name="C:\Users\marku\go\src\github.com\nodejayes\gotools\test\types" />
       <recent name="C:\Users\marku\go\src\github.com\nodejayes\gotools\test\types\integer" />
       <recent name="C:\Users\marku\go\src\github.com\nodejayes\gotools\test\types\double" />
-      <recent name="C:\Users\marku\go\src\github.com\nodejayes\gotools\src\types\integer" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\marku\go\src\github.com\nodejayes\gotools\src\types\double" />
@@ -68,18 +82,33 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
-    <configuration name="go test github.com/nodejayes/gotools/test/types" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Go Test.go test test">
+    <configuration name="TestNoPanicAndDefaultDoubleOnInvalidByteArray in github.com/nodejayes/gotools/test/types" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
       <module name="gotools" />
       <working_directory value="$PROJECT_DIR$/test/types" />
       <framework value="gotest" />
       <kind value="PACKAGE" />
       <package value="github.com/nodejayes/gotools/test/types" />
+      <pattern value="^TestNoPanicAndDefaultDoubleOnInvalidByteArray$" />
       <method v="2" />
     </configuration>
+    <configuration name="go test test" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="gotools" />
+      <working_directory value="$PROJECT_DIR$" />
+      <framework value="gotest" />
+      <kind value="DIRECTORY" />
+      <package value="github.com/nodejayes/gotools/test/types" />
+      <directory value="$PROJECT_DIR$/test" />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Go Test.go test test" />
+      <item itemvalue="Go Test.TestNoPanicAndDefaultDoubleOnInvalidByteArray in github.com/nodejayes/gotools/test/types" />
+    </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Go Test.go test github.com/nodejayes/gotools/test/types" />
+        <item itemvalue="Go Test.go test test" />
+        <item itemvalue="Go Test.TestNoPanicAndDefaultDoubleOnInvalidByteArray in github.com/nodejayes/gotools/test/types" />
       </list>
     </recent_temporary>
   </component>
@@ -101,9 +130,21 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="init" />
     <MESSAGE value="fix tests" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix tests" />
+    <MESSAGE value="wip: tests" />
+    <option name="LAST_COMMIT_MESSAGE" value="wip: tests" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
+          <url>file://$PROJECT_DIR$/types/double_test.go</url>
+          <line>85</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/gotools$go_test_github_com_nodejayes_gotools_test_types.out" NAME="go test github.com/nodejayes/gotools/test/types Coverage Results" MODIFIED="1569152351645" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/gotools$go_test_github_com_nodejayes_gotools_test_types.out" NAME="go test test Coverage Results" MODIFIED="1569178737462" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>
