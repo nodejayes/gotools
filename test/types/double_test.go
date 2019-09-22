@@ -1,7 +1,7 @@
 package types
 
 import (
-	"github.com/nodejayes/tooling/src/types"
+	"github.com/nodejayes/gotools/src/types"
 	. "github.com/smartystreets/goconvey/convey"
 	"testing"
 	"time"
