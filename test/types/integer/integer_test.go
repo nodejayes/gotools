@@ -1,67 +1,137 @@
-package types
+package integer
 
 import (
-	"github.com/nodejayes/gotools/src/types"
+	"github.com/nodejayes/gotools/src/types/double"
+	"github.com/nodejayes/gotools/src/types/integer"
+	"github.com/onsi/gomega"
 	. "github.com/smartystreets/goconvey/convey"
 	"testing"
 	"time"
 )
 
+func TestCreateNewIntegerFromInt(t *testing.T) {
+	g := gomega.NewGomegaWithT(t)
+}
+
+func TestCreateNewIntegerFromInt16(t *testing.T) {
+	g := gomega.NewGomegaWithT(t)
+}
+
+func TestCreateNewIntegerFromInt32(t *testing.T) {
+	g := gomega.NewGomegaWithT(t)
+}
+
+func TestCreateNewIntegerFromInt64(t *testing.T) {
+	g := gomega.NewGomegaWithT(t)
+}
+
+func TestCreateNewIntegerFromFloat32(t *testing.T) {
+	g := gomega.NewGomegaWithT(t)
+}
+
+func TestCreateNewIntegerFromFloat64(t *testing.T) {
+	g := gomega.NewGomegaWithT(t)
+}
+
+func TestCreateNewIntegerFromString(t *testing.T) {
+	g := gomega.NewGomegaWithT(t)
+}
+
+func TestCreateNewIntegerFromByteArray(t *testing.T) {
+	g := gomega.NewGomegaWithT(t)
+}
+
+func TestCreateNewIntegerFromInteger(t *testing.T) {
+	g := gomega.NewGomegaWithT(t)
+}
+
+func TestCreateNewIntegerFromDouble(t *testing.T) {
+	g := gomega.NewGomegaWithT(t)
+}
+
+func TestNoPanicAndDefaultIntegerWhenNotSupported(t *testing.T) {
+	g := gomega.NewGomegaWithT(t)
+}
+
+func TestRoundingFloatValues(t *testing.T) {
+	g := gomega.NewGomegaWithT(t)
+}
+
+func TestCanGetIntegerValueAsInt(t *testing.T) {
+	g := gomega.NewGomegaWithT(t)
+}
+
+func TestCanGetIntegerValueAsInt16(t *testing.T) {
+	g := gomega.NewGomegaWithT(t)
+}
+
+func TestCanGetIntegerValueAsInt32(t *testing.T) {
+	g := gomega.NewGomegaWithT(t)
+}
+
+func TestCanGetIntegerValueAsInt64(t *testing.T) {
+	g := gomega.NewGomegaWithT(t)
+}
+
+func TestIsInRange(t *testing.T) {
+	g := gomega.NewGomegaWithT(t)
+}
+
 func TestInteger(t *testing.T) {
 	Convey("Integer", t, func() {
-		globalI := types.NewInteger(4)
+		globalI := int_type.NewInteger(4)
 		Convey("can create new Integer Values from int", func() {
-			i := types.NewInteger(1)
+			i := int_type.NewInteger(1)
 			So(i.AsInt(), ShouldEqual, 1)
 			So(i.IsValid(), ShouldBeTrue)
 		})
 		Convey("can create new Integer Values from int16", func() {
-			i := types.NewInteger(int16(1))
+			i := int_type.NewInteger(int16(1))
 			So(i.AsInt(), ShouldEqual, 1)
 		})
 		Convey("can create new Integer Values from int32", func() {
-			i := types.NewInteger(int32(1))
+			i := int_type.NewInteger(int32(1))
 			So(i.AsInt(), ShouldEqual, 1)
 		})
 		Convey("can create new Integer Values from int64", func() {
-			i := types.NewInteger(int64(1))
+			i := int_type.NewInteger(int64(1))
 			So(i.AsInt(), ShouldEqual, 1)
 		})
 		Convey("can create new Integer Values from float32", func() {
-			i := types.NewInteger(float32(1))
+			i := int_type.NewInteger(float32(1))
 			So(i.AsInt(), ShouldEqual, 1)
 		})
 		Convey("can create new Integer Values from float64", func() {
-			i := types.NewInteger(float64(1))
+			i := int_type.NewInteger(float64(1))
 			So(i.AsInt(), ShouldEqual, 1)
 		})
 		Convey("can create new Integer Values from string", func() {
-			i := types.NewInteger("1")
+			i := int_type.NewInteger("1")
 			So(i.AsInt(), ShouldEqual, 1)
 		})
 		Convey("can create new Integer Values from []byte", func() {
-			i := types.NewInteger([]byte("1"))
+			i := int_type.NewInteger([]byte("1"))
 			So(i.AsInt(), ShouldEqual, 1)
 		})
 		Convey("can create new Integer Values from Integer", func() {
-			i := types.NewInteger(types.NewInteger(1))
+			i := int_type.NewInteger(int_type.NewInteger(1))
 			So(i.AsInt(), ShouldEqual, 1)
 		})
 		Convey("can create new Integer Values from Double", func() {
-			i := types.NewInteger(types.NewDouble(1))
+			i := int_type.NewInteger(double_type.NewDouble(1))
 			So(i.AsInt(), ShouldEqual, 1)
 		})
 		Convey("log info when type not supported", func() {
-			i := types.NewInteger(time.Now())
+			i := int_type.NewInteger(time.Now())
 			So(i.AsInt(), ShouldEqual, 0)
 			So(i.IsValid(), ShouldBeFalse)
 		})
 		Convey("float values are round", func() {
-			i := types.NewInteger(float32(1.5))
+			i := int_type.NewInteger(float32(1.5))
 			So(i.AsInt(), ShouldEqual, 1)
-			i = types.NewInteger(float32(1.4))
+			i = int_type.NewInteger(float32(1.4))
 			So(i.AsInt(), ShouldEqual, 1)
-			i = types.NewInteger(float32(1.6))
+			i = int_type.NewInteger(float32(1.6))
 			So(i.AsInt(), ShouldEqual, 1)
 		})
 		Convey("can get as int", func() {
@@ -77,47 +147,47 @@ func TestInteger(t *testing.T) {
 			So(globalI.AsInt64(), ShouldEqual, int64(4))
 		})
 		Convey("check IsInRange", func() {
-			z := []types.Integer{
-				types.NewInteger(0),
-				types.NewInteger(1),
-				types.NewInteger(2),
-				types.NewInteger(3),
+			z := []int_type.Integer{
+				int_type.NewInteger(0),
+				int_type.NewInteger(1),
+				int_type.NewInteger(2),
+				int_type.NewInteger(3),
 			}
 			So(z[1].IsInRange(z[0], z[2]), ShouldBeTrue)
 			So(z[1].IsInRange(z[1], z[2]), ShouldBeTrue)
 			So(z[1].IsInRange(z[2], z[3]), ShouldBeFalse)
 		})
 		Convey("check Equals", func() {
-			z := types.NewInteger(1)
-			x := types.NewInteger(2)
+			z := int_type.NewInteger(1)
+			x := int_type.NewInteger(2)
 			So(z.Equals(z), ShouldBeTrue)
 			So(z.Equals(x), ShouldBeFalse)
 		})
 		Convey("check IsAbove", func() {
-			z := []types.Integer{
-				types.NewInteger(0),
-				types.NewInteger(1),
+			z := []int_type.Integer{
+				int_type.NewInteger(0),
+				int_type.NewInteger(1),
 			}
 			So(z[0].IsAbove(z[0]), ShouldBeFalse)
 			So(z[0].IsAbove(z[1]), ShouldBeFalse)
 			So(z[1].IsAbove(z[0]), ShouldBeTrue)
 		})
 		Convey("check IsBelow", func() {
-			z := []types.Integer{
-				types.NewInteger(0),
-				types.NewInteger(1),
+			z := []int_type.Integer{
+				int_type.NewInteger(0),
+				int_type.NewInteger(1),
 			}
 			So(z[0].IsBelow(z[0]), ShouldBeFalse)
 			So(z[0].IsBelow(z[1]), ShouldBeTrue)
 			So(z[1].IsBelow(z[0]), ShouldBeFalse)
 		})
 		Convey("check Clamp", func() {
-			z := []types.Integer{
-				types.NewInteger(100),
-				types.NewInteger(50),
-				types.NewInteger(200),
-				types.NewInteger(400),
-				types.NewInteger(1),
+			z := []int_type.Integer{
+				int_type.NewInteger(100),
+				int_type.NewInteger(50),
+				int_type.NewInteger(200),
+				int_type.NewInteger(400),
+				int_type.NewInteger(1),
 			}
 			tmp1 := z[0].Clamp(z[1], z[2])
 			tmp2 := z[1].Clamp(z[1], z[2])
@@ -131,35 +201,35 @@ func TestInteger(t *testing.T) {
 			So(tmp5.AsInt(), ShouldEqual, 50)
 		})
 		Convey("check Add", func() {
-			z := types.NewInteger(5)
-			res := z.Add(types.NewInteger(1))
+			z := int_type.NewInteger(5)
+			res := z.Add(int_type.NewInteger(1))
 			So(res.AsInt(), ShouldEqual, 6)
 		})
 		Convey("check Subtract", func() {
-			z := types.NewInteger(5)
-			res := z.Subtract(types.NewInteger(1))
+			z := int_type.NewInteger(5)
+			res := z.Subtract(int_type.NewInteger(1))
 			So(res.AsInt(), ShouldEqual, 4)
 		})
 		Convey("check Multiply", func() {
-			z := types.NewInteger(5)
-			res := z.Multiply(types.NewInteger(2))
+			z := int_type.NewInteger(5)
+			res := z.Multiply(int_type.NewInteger(2))
 			So(res.AsInt(), ShouldEqual, 10)
 		})
 		Convey("check Division", func() {
-			z := types.NewInteger(4)
-			res := z.Divide(types.NewInteger(2))
+			z := int_type.NewInteger(4)
+			res := z.Divide(int_type.NewInteger(2))
 			So(res.AsInt(), ShouldEqual, 2)
 		})
 		Convey("no Division by Zero", func() {
-			z := types.NewInteger(4)
+			z := int_type.NewInteger(4)
 			So(func() {
-				z.Divide(types.NewInteger(0))
+				z.Divide(int_type.NewInteger(0))
 			}, ShouldPanic)
 		})
 		Convey("can create Random Integer", func() {
-			min := types.NewInteger(1)
-			max := types.NewInteger(10)
-			z := types.RandomInteger(min, max)
+			min := int_type.NewInteger(1)
+			max := int_type.NewInteger(10)
+			z := int_type.RandomInteger(min, max)
 			So(z.AsInt(), ShouldBeBetween, 0, 11)
 		})
 	})

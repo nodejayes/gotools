@@ -1,14 +1,15 @@
-package types
+package double_type
 
 import (
 	"bytes"
 	"fmt"
+	"github.com/nodejayes/gotools/src/types/integer"
 	"math"
 )
 
 // ceiling the Double by the given precision
-func (d *Double) Ceil(precision Integer) Double {
-	if precision.IsBelow(NewInteger(1)) {
+func (d *Double) Ceil(precision int_type.Integer) Double {
+	if precision.IsBelow(int_type.NewInteger(1)) {
 		return NewDouble(math.Ceil(d.AsFloat64()))
 	}
 	buf := bytes.NewBuffer([]byte{})
@@ -23,8 +24,8 @@ func (d *Double) Ceil(precision Integer) Double {
 }
 
 // floor the Double by the given precision
-func (d *Double) Floor(precision Integer) Double {
-	if precision.IsBelow(NewInteger(1)) {
+func (d *Double) Floor(precision int_type.Integer) Double {
+	if precision.IsBelow(int_type.NewInteger(1)) {
 		return NewDouble(math.Floor(d.AsFloat64()))
 	}
 	buf := bytes.NewBuffer([]byte{})
@@ -39,7 +40,7 @@ func (d *Double) Floor(precision Integer) Double {
 }
 
 // round the Double by the given precision
-func (d *Double) Round(precision Integer) Double {
+func (d *Double) Round(precision int_type.Integer) Double {
 	fmtBuf := bytes.NewBuffer([]byte{})
 	fmtBuf.WriteString("%.")
 	fmtBuf.WriteString(precision.ToString())
