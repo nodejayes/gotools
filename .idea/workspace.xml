@@ -117,7 +117,8 @@
     <MESSAGE value="fix build command in travis ci config" />
     <MESSAGE value="test with coveralls" />
     <MESSAGE value="switch test and build" />
-    <option name="LAST_COMMIT_MESSAGE" value="switch test and build" />
+    <MESSAGE value="travis ci" />
+    <option name="LAST_COMMIT_MESSAGE" value="travis ci" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

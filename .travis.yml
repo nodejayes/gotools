@@ -5,13 +5,13 @@ go: 1.13.x
 notifications:
   email: markusgilg@outlook.de
 
-before_script:
-  - go get golang.org/x/tools/cmd/cover
-  - go get github.com/mattn/goveralls
-
 jobs:
   include:
     - stage: test
-      script: go test -v -covermode=count -coverprofile=coverage.out && $HOME/gopath/bin/goveralls -coverprofile=coverage.out -service=travis-ci -repotoken gvoncJ0n5yDL68I2IKscHoPfXH38Ktkyr
+      script:
+        - go get golang.org/x/tools/cmd/cover
+        - go get github.com/mattn/goveralls
+        - go test -v -covermode=count -coverprofile=coverage.out
+        - $HOME/gopath/bin/goveralls -coverprofile=coverage.out -service=travis-ci -repotoken gvoncJ0n5yDL68I2IKscHoPfXH38Ktkyr
     - stage: build
     script: go build ./...
