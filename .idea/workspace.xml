@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7253ef86-496f-4602-861f-e41926c1695a" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/types/divisible_number.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/types/divisible_number_test.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.travis.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.travis.yml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -23,6 +24,11 @@
   </component>
   <component name="GOROOT" path="C:\Go" />
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1RBnvYsOxMaa1hJiyARlkuKcCDW" />
@@ -120,7 +126,9 @@
     <MESSAGE value="switch test and build" />
     <MESSAGE value="travis ci" />
     <MESSAGE value="add gomega to travis ci" />
-    <option name="LAST_COMMIT_MESSAGE" value="add gomega to travis ci" />
+    <MESSAGE value="make coveralls token secure" />
+    <MESSAGE value="remove old coveralls yml" />
+    <option name="LAST_COMMIT_MESSAGE" value="remove old coveralls yml" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
