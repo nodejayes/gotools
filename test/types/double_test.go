@@ -163,7 +163,7 @@ func TestDouble(t *testing.T) {
 			res := example.Round(types.NewInteger(0))
 			So(res.AsFloat64(), ShouldEqual, 4)
 			example = types.NewDouble(4.006)
-			res = example.Floor(types.NewInteger(2))
+			res = example.Round(types.NewInteger(2))
 			So(res.AsFloat64(), ShouldEqual, 4.01)
 		})
 		Convey("can create Random Double", func() {
