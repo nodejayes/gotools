@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7253ef86-496f-4602-861f-e41926c1695a" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.travis.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.travis.yml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -118,7 +119,8 @@
     <MESSAGE value="test with coveralls" />
     <MESSAGE value="switch test and build" />
     <MESSAGE value="travis ci" />
-    <option name="LAST_COMMIT_MESSAGE" value="travis ci" />
+    <MESSAGE value="add gomega to travis ci" />
+    <option name="LAST_COMMIT_MESSAGE" value="add gomega to travis ci" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

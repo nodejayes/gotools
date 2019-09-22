@@ -3,10 +3,14 @@ go: 1.13.x
 notifications:
   email: markusgilg@outlook.de
 install:
-  - go get golang.org/x/tools/cmd/cover
-  - go get github.com/mattn/goveralls
-  - go get github.com/onsi/gomega
+- go get golang.org/x/tools/cmd/cover
+- go get github.com/mattn/goveralls
+- go get github.com/onsi/gomega
 script:
-  - go test -v -covermode=count -coverprofile=coverage.out ./...
+- go test -v -covermode=count -coverprofile=coverage.out ./...
 after_success:
-  - $HOME/gopath/bin/goveralls -coverprofile=coverage.out -service=travis-ci -repotoken gvoncJ0n5yDL68I2IKscHoPfXH38Ktkyr
+- "$HOME/gopath/bin/goveralls -coverprofile=coverage.out -service=travis-ci -repotoken
+  $COVERALLS_TOKEN"
+env:
+  global:
+    secure: EXMI4yz/19w/9yFQIrkqr/xI22NzBAu55DUeTQ5Zw5LcMqZ7rYDChOmhaJH8ehIy7X8t+Zsg31AxtVGWvzaAVuZzY1+haCdpmRBE34Fgqr9bZUaFUPo9Q/OSIksKexHzDwDdGn8nEtvCpaBjH/mcMNf36n4/E4G3rS1/chvup00Q6xvffwK4U8wDGj5GDXHZoIRByBAXrz1370+oDClrWuvJ1DaUseVFNyK2YqK4hFZbNWAePoJiuEk192S+K3T5nbGx/6mp4rVPjGUaASj9LxZrqxzoCcA1srK5FT353BdLg24fokIpdu5/RJSeyHmQbSRcExPWW2O6/jHZk/Cru3e13AuG+/6uxEQlSkxjfnH8ib8W1MUUyg3fCBUz323btVu5Ox075IWEaE0pRTQDc3ZOryyYf0flZLuEs0M+EC3MI/7HLJHNXooWwsylgJWkm8pCXzkHrgk1Ka/CUZx5+we6Q5z7MwKJmEs6z7MbSJ3dH14cELOvwFgURJH5+YLtJvAI5GSUYRSVj2pOilbxsJ1O0DeBJEGutdd81ZJMy53KoONA/P0AYJj9ADFTazeFLTYKdFXHJzXV2tEqpXhovmXp1fxD8VOZWHWfH7OAVkWhLyvDCoK2hzW56aEWZcrRxyRDsfU42S0f8MjgNYRIqIPLsXaJrWiI/QMTy5oqkuI=
