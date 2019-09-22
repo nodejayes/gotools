@@ -2,26 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7253ef86-496f-4602-861f-e41926c1695a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.coveralls.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gotools.coverprofile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/types/double.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/types/integer.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/types/integer_test.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.travis.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.travis.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/types/double/checks.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/types/double/conversion.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/types/double/math.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/types/double/rounding.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/types/double/statics.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/types/double/types.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/types/integer/checks.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/types/integer/conversion.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/types/integer/math.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/types/integer/statics.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/types/integer/types.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/types/double/double_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/types/double_test.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/types/integer/integer_test.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -131,7 +114,8 @@
     <MESSAGE value="init" />
     <MESSAGE value="fix tests" />
     <MESSAGE value="wip: tests" />
-    <option name="LAST_COMMIT_MESSAGE" value="wip: tests" />
+    <MESSAGE value="100% Coverage&#10;&#10;Integer and Double Implementation" />
+    <option name="LAST_COMMIT_MESSAGE" value="100% Coverage&#10;&#10;Integer and Double Implementation" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
