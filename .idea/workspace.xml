@@ -2,9 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7253ef86-496f-4602-861f-e41926c1695a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/types/divisible_number.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/types/divisible_number_test.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/number_test.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/types/number.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/types/divisible_number.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/types/divisible_number_test.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/types/double.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/types/double_test.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/types/integer.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/types/integer_test.go" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -42,9 +48,10 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="go.import.settings.migrated" value="true" />
     <property name="go.sdk.automatically.set" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/test" />
+    <property name="last_opened_file_path" value="$USER_HOME$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="restartRequiresConfirmation" value="false" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -70,14 +77,47 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Go Test.go test test">
-    <configuration name="TestNoPanicAndDefaultDoubleOnInvalidByteArray in github.com/nodejayes/gotools/test/types" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Go Test.go test github.com/nodejayes/gotools/tests">
+    <configuration name="TestDivisibleNumberCreateFromDivisibleNumber in github.com/nodejayes/gotools/types" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
       <module name="gotools" />
-      <working_directory value="$PROJECT_DIR$/test/types" />
+      <working_directory value="$PROJECT_DIR$/types" />
       <framework value="gotest" />
       <kind value="PACKAGE" />
-      <package value="github.com/nodejayes/gotools/test/types" />
-      <pattern value="^TestNoPanicAndDefaultDoubleOnInvalidByteArray$" />
+      <package value="github.com/nodejayes/gotools/types" />
+      <directory value="$PROJECT_DIR$/" />
+      <filePath value="$PROJECT_DIR$/" />
+      <pattern value="^TestDivisibleNumberCreateFromDivisibleNumber$" />
+      <method v="2" />
+    </configuration>
+    <configuration name="TestDivisibleNumberCreateFromInt in github.com/nodejayes/gotools/types" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="gotools" />
+      <working_directory value="$PROJECT_DIR$/types" />
+      <framework value="gotest" />
+      <kind value="PACKAGE" />
+      <package value="github.com/nodejayes/gotools/types" />
+      <directory value="$PROJECT_DIR$/" />
+      <filePath value="$PROJECT_DIR$/" />
+      <pattern value="^TestDivisibleNumberCreateFromInt$" />
+      <method v="2" />
+    </configuration>
+    <configuration name="go test github.com/nodejayes/gotools/tests" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="gotools" />
+      <working_directory value="$PROJECT_DIR$/tests" />
+      <framework value="gotest" />
+      <kind value="PACKAGE" />
+      <package value="github.com/nodejayes/gotools/tests" />
+      <directory value="$PROJECT_DIR$/" />
+      <filePath value="$PROJECT_DIR$/" />
+      <method v="2" />
+    </configuration>
+    <configuration name="go test github.com/nodejayes/gotools/types" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="gotools" />
+      <working_directory value="$PROJECT_DIR$/types" />
+      <framework value="gotest" />
+      <kind value="PACKAGE" />
+      <package value="github.com/nodejayes/gotools/types" />
+      <directory value="$PROJECT_DIR$/" />
+      <filePath value="$PROJECT_DIR$/" />
       <method v="2" />
     </configuration>
     <configuration name="go test test" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
@@ -91,12 +131,18 @@
     </configuration>
     <list>
       <item itemvalue="Go Test.go test test" />
-      <item itemvalue="Go Test.TestNoPanicAndDefaultDoubleOnInvalidByteArray in github.com/nodejayes/gotools/test/types" />
+      <item itemvalue="Go Test.TestDivisibleNumberCreateFromInt in github.com/nodejayes/gotools/types" />
+      <item itemvalue="Go Test.go test github.com/nodejayes/gotools/types" />
+      <item itemvalue="Go Test.TestDivisibleNumberCreateFromDivisibleNumber in github.com/nodejayes/gotools/types" />
+      <item itemvalue="Go Test.go test github.com/nodejayes/gotools/tests" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Go Test.go test github.com/nodejayes/gotools/tests" />
+        <item itemvalue="Go Test.TestDivisibleNumberCreateFromDivisibleNumber in github.com/nodejayes/gotools/types" />
+        <item itemvalue="Go Test.go test github.com/nodejayes/gotools/types" />
+        <item itemvalue="Go Test.TestDivisibleNumberCreateFromInt in github.com/nodejayes/gotools/types" />
         <item itemvalue="Go Test.go test test" />
-        <item itemvalue="Go Test.TestNoPanicAndDefaultDoubleOnInvalidByteArray in github.com/nodejayes/gotools/test/types" />
       </list>
     </recent_temporary>
   </component>
@@ -108,7 +154,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
@@ -130,18 +178,8 @@
     <MESSAGE value="remove old coveralls yml" />
     <option name="LAST_COMMIT_MESSAGE" value="remove old coveralls yml" />
   </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
-          <url>file://$PROJECT_DIR$/types/double_test.go</url>
-          <line>85</line>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
-  </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/gotools$go_test_github_com_nodejayes_gotools_test_types.out" NAME="go test test Coverage Results" MODIFIED="1569178737462" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/gotools$TestDivisibleNumberCreateFromDivisibleNumber_in_github_com_nodejayes_gotools_types.out" NAME="TestDivisibleNumberCreateFromDivisibleNumber in github.com/nodejayes/gotools/types Coverage Results" MODIFIED="1569267555912" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>
