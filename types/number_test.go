@@ -1,7 +1,6 @@
-package tests
+package types
 
 import (
-	"github.com/nodejayes/gotools/types"
 	"github.com/onsi/gomega"
 	"testing"
 	"time"
@@ -9,157 +8,157 @@ import (
 
 func TestCreateNumberFromInt(t *testing.T) {
 	g := gomega.NewGomegaWithT(t)
-	g.Expect(types.NewNumber(1).AsFloat64()).
+	g.Expect(NewNumber(1).AsFloat64()).
 		To(gomega.Equal(float64(1)))
 }
 
 func TestCreateNumberFromInt16(t *testing.T) {
 	g := gomega.NewGomegaWithT(t)
-	g.Expect(types.NewNumber(int16(1)).AsFloat64()).
+	g.Expect(NewNumber(int16(1)).AsFloat64()).
 		To(gomega.Equal(float64(1)))
 }
 
 func TestCreateNumberFromInt32(t *testing.T) {
 	g := gomega.NewGomegaWithT(t)
-	g.Expect(types.NewNumber(int32(1)).AsFloat64()).
+	g.Expect(NewNumber(int32(1)).AsFloat64()).
 		To(gomega.Equal(float64(1)))
 }
 
 func TestCreateNumberFromInt64(t *testing.T) {
 	g := gomega.NewGomegaWithT(t)
-	g.Expect(types.NewNumber(int64(1)).AsFloat64()).
+	g.Expect(NewNumber(int64(1)).AsFloat64()).
 		To(gomega.Equal(float64(1)))
 }
 
 func TestCreateNumberFromFloat32(t *testing.T) {
 	g := gomega.NewGomegaWithT(t)
-	g.Expect(types.NewNumber(float32(1.5)).AsFloat64()).
+	g.Expect(NewNumber(float32(1.5)).AsFloat64()).
 		To(gomega.Equal(1.5))
 }
 
 func TestCreateNumberFromFloat64(t *testing.T) {
 	g := gomega.NewGomegaWithT(t)
-	g.Expect(types.NewNumber(1.5).AsFloat64()).
+	g.Expect(NewNumber(1.5).AsFloat64()).
 		To(gomega.Equal(1.5))
 }
 
 func TestCreateNumberFromString(t *testing.T) {
 	g := gomega.NewGomegaWithT(t)
-	g.Expect(types.NewNumber("1.5").AsFloat64()).
+	g.Expect(NewNumber("1.5").AsFloat64()).
 		To(gomega.Equal(1.5))
-	g.Expect(types.NewNumber("1").AsFloat64()).
+	g.Expect(NewNumber("1").AsFloat64()).
 		To(gomega.Equal(float64(1)))
 }
 
 func TestCreateNumberFromByteArray(t *testing.T) {
 	g := gomega.NewGomegaWithT(t)
-	g.Expect(types.NewNumber([]byte("1.5")).AsFloat64()).
+	g.Expect(NewNumber([]byte("1.5")).AsFloat64()).
 		To(gomega.Equal(1.5))
 }
 
 func TestCreateNumberFromNumberPointer(t *testing.T) {
 	g := gomega.NewGomegaWithT(t)
-	g.Expect(types.NewNumber(types.NewNumber(1)).AsFloat64()).
+	g.Expect(NewNumber(NewNumber(1)).AsFloat64()).
 		To(gomega.Equal(float64(1)))
 }
 
 func TestCreateNumberFromNumber(t *testing.T) {
 	g := gomega.NewGomegaWithT(t)
-	g.Expect(types.NewNumber(*types.NewNumber(1)).AsFloat64()).
+	g.Expect(NewNumber(*NewNumber(1)).AsFloat64()).
 		To(gomega.Equal(float64(1)))
 }
 
 func TestNumberNotPanicAndCreateDefaultNumberFromUnsupported(t *testing.T) {
 	g := gomega.NewGomegaWithT(t)
-	g.Expect(types.NewNumber(time.Now()).AsFloat64()).
+	g.Expect(NewNumber(time.Now()).AsFloat64()).
 		To(gomega.Equal(float64(0)))
-	g.Expect(types.NewNumber(time.Now()).IsValid()).
+	g.Expect(NewNumber(time.Now()).IsValid()).
 		To(gomega.BeFalse())
 }
 
 func TestNoPanicAndDefaultNumberOnInvalidString(t *testing.T) {
 	g := gomega.NewGomegaWithT(t)
-	g.Expect(types.NewNumber("abc").AsFloat64()).
+	g.Expect(NewNumber("abc").AsFloat64()).
 		To(gomega.Equal(float64(0)))
-	g.Expect(types.NewNumber("abc").IsValid()).
+	g.Expect(NewNumber("abc").IsValid()).
 		To(gomega.BeFalse())
 }
 
 func TestNoPanicAndDefaultNumberOnInvalidByteArray(t *testing.T) {
 	g := gomega.NewGomegaWithT(t)
-	g.Expect(types.NewNumber([]byte("abc")).AsFloat64()).
+	g.Expect(NewNumber([]byte("abc")).AsFloat64()).
 		To(gomega.Equal(float64(0)))
-	g.Expect(types.NewNumber([]byte("abc")).IsValid()).
+	g.Expect(NewNumber([]byte("abc")).IsValid()).
 		To(gomega.BeFalse())
 }
 
 func TestNumberCanGetNumberValueAsInt(t *testing.T) {
 	g := gomega.NewGomegaWithT(t)
-	g.Expect(types.NewNumber(1).AsInt()).
+	g.Expect(NewNumber(1).AsInt()).
 		To(gomega.Equal(1))
 }
 
 func TestNumberCanGetNumberValueAsInt16(t *testing.T) {
 	g := gomega.NewGomegaWithT(t)
-	g.Expect(types.NewNumber(1).AsInt16()).
+	g.Expect(NewNumber(1).AsInt16()).
 		To(gomega.Equal(int16(1)))
 }
 
 func TestNumberCanGetNumberValueAsInt32(t *testing.T) {
 	g := gomega.NewGomegaWithT(t)
-	g.Expect(types.NewNumber(1).AsInt32()).
+	g.Expect(NewNumber(1).AsInt32()).
 		To(gomega.Equal(int32(1)))
 }
 
 func TestNumberCanGetNumberValueAsInt64(t *testing.T) {
 	g := gomega.NewGomegaWithT(t)
-	g.Expect(types.NewNumber(1).AsInt64()).
+	g.Expect(NewNumber(1).AsInt64()).
 		To(gomega.Equal(int64(1)))
 }
 
 func TestNumberCanGetNumberValueAsFloat32(t *testing.T) {
 	g := gomega.NewGomegaWithT(t)
-	g.Expect(types.NewNumber(1.5).AsFloat32()).
+	g.Expect(NewNumber(1.5).AsFloat32()).
 		To(gomega.Equal(float32(1.5)))
 }
 
 func TestNumberCanGetNumberValueAsFloat64(t *testing.T) {
 	g := gomega.NewGomegaWithT(t)
-	g.Expect(types.NewNumber(1.5).AsFloat64()).
+	g.Expect(NewNumber(1.5).AsFloat64()).
 		To(gomega.Equal(1.5))
 }
 
 func TestNumberCanGetAsString(t *testing.T) {
 	g := gomega.NewGomegaWithT(t)
-	g.Expect(types.NewNumber(1.5).AsString(*types.NewNumber(2))).
+	g.Expect(NewNumber(1.5).AsString(*NewNumber(2))).
 		To(gomega.Equal("1.50"))
-	g.Expect(types.NewNumber(1.5).AsString(*types.NewNumber(1))).
+	g.Expect(NewNumber(1.5).AsString(*NewNumber(1))).
 		To(gomega.Equal("1.5"))
-	g.Expect(types.NewNumber(1.5).AsString(*types.NewNumber(0))).
+	g.Expect(NewNumber(1.5).AsString(*NewNumber(0))).
 		To(gomega.Equal("2"))
-	g.Expect(types.NewNumber(1.5).AsString(*types.NewNumber(-1))).
+	g.Expect(NewNumber(1.5).AsString(*NewNumber(-1))).
 		To(gomega.Equal("1.5"))
 }
 
 func TestNumberCanGetAsByteArray(t *testing.T) {
 	g := gomega.NewGomegaWithT(t)
-	g.Expect(string(types.NewNumber(1.5).AsByte(*types.NewNumber(2)))).
+	g.Expect(string(NewNumber(1.5).AsByte(*NewNumber(2)))).
 		To(gomega.Equal("1.50"))
-	g.Expect(string(types.NewNumber(1.5).AsByte(*types.NewNumber(1)))).
+	g.Expect(string(NewNumber(1.5).AsByte(*NewNumber(1)))).
 		To(gomega.Equal("1.5"))
-	g.Expect(string(types.NewNumber(1.5).AsByte(*types.NewNumber(0)))).
+	g.Expect(string(NewNumber(1.5).AsByte(*NewNumber(0)))).
 		To(gomega.Equal("2"))
-	g.Expect(string(types.NewNumber(1.5).AsByte(*types.NewNumber(-1)))).
+	g.Expect(string(NewNumber(1.5).AsByte(*NewNumber(-1)))).
 		To(gomega.Equal("1.5"))
 }
 
 func TestNumberIsInRange(t *testing.T) {
 	g := gomega.NewGomegaWithT(t)
-	z := []*types.Number{
-		types.NewNumber(0),
-		types.NewNumber(1),
-		types.NewNumber(2),
-		types.NewNumber(3),
+	z := []*Number{
+		NewNumber(0),
+		NewNumber(1),
+		NewNumber(2),
+		NewNumber(3),
 	}
 	g.Expect(z[1].IsInRange(*z[0], *z[2])).
 		To(gomega.BeTrue())
@@ -171,8 +170,8 @@ func TestNumberIsInRange(t *testing.T) {
 
 func TestNumberEquals(t *testing.T) {
 	g := gomega.NewGomegaWithT(t)
-	z := types.NewNumber(1)
-	x := types.NewNumber(2)
+	z := NewNumber(1)
+	x := NewNumber(2)
 	g.Expect(z.Equals(*z)).
 		To(gomega.BeTrue())
 	g.Expect(z.Equals(*x)).
@@ -181,9 +180,9 @@ func TestNumberEquals(t *testing.T) {
 
 func TestNumberIsAbove(t *testing.T) {
 	g := gomega.NewGomegaWithT(t)
-	z := []*types.Number{
-		types.NewNumber(0),
-		types.NewNumber(1),
+	z := []*Number{
+		NewNumber(0),
+		NewNumber(1),
 	}
 	g.Expect(z[0].IsAbove(*z[0])).
 		To(gomega.BeFalse())
@@ -195,9 +194,9 @@ func TestNumberIsAbove(t *testing.T) {
 
 func TestNumberIsBelow(t *testing.T) {
 	g := gomega.NewGomegaWithT(t)
-	z := []*types.Number{
-		types.NewNumber(0),
-		types.NewNumber(1),
+	z := []*Number{
+		NewNumber(0),
+		NewNumber(1),
 	}
 	g.Expect(z[0].IsBelow(*z[0])).
 		To(gomega.BeFalse())
@@ -209,12 +208,12 @@ func TestNumberIsBelow(t *testing.T) {
 
 func TestNumberClamp(t *testing.T) {
 	g := gomega.NewGomegaWithT(t)
-	z := []*types.Number{
-		types.NewNumber(100),
-		types.NewNumber(50),
-		types.NewNumber(200),
-		types.NewNumber(400),
-		types.NewNumber(1),
+	z := []*Number{
+		NewNumber(100),
+		NewNumber(50),
+		NewNumber(200),
+		NewNumber(400),
+		NewNumber(1),
 	}
 	g.Expect(z[0].Clamp(*z[1], *z[2]).AsFloat64()).
 		To(gomega.Equal(float64(100)))
@@ -230,62 +229,62 @@ func TestNumberClamp(t *testing.T) {
 
 func TestNumberAdd(t *testing.T) {
 	g := gomega.NewGomegaWithT(t)
-	g.Expect(types.NewNumber(5).Add(*types.NewNumber(1)).AsFloat64()).
+	g.Expect(NewNumber(5).Add(*NewNumber(1)).AsFloat64()).
 		To(gomega.Equal(float64(6)))
 }
 
 func TestNumberSubtract(t *testing.T) {
 	g := gomega.NewGomegaWithT(t)
-	g.Expect(types.NewNumber(5).Subtract(*types.NewNumber(1)).AsFloat64()).
+	g.Expect(NewNumber(5).Subtract(*NewNumber(1)).AsFloat64()).
 		To(gomega.Equal(float64(4)))
 }
 
 func TestNumberMultiply(t *testing.T) {
 	g := gomega.NewGomegaWithT(t)
-	g.Expect(types.NewNumber(5).Multiply(*types.NewNumber(2)).AsFloat64()).
+	g.Expect(NewNumber(5).Multiply(*NewNumber(2)).AsFloat64()).
 		To(gomega.Equal(float64(10)))
 }
 
 func TestNumberDivide(t *testing.T) {
 	g := gomega.NewGomegaWithT(t)
-	g.Expect(types.NewNumber(4).Divide(*types.NewNumber(2)).AsFloat64()).
+	g.Expect(NewNumber(4).Divide(*NewNumber(2)).AsFloat64()).
 		To(gomega.Equal(float64(2)))
 }
 
 func TestNumberDivisionByZero(t *testing.T) {
 	g := gomega.NewGomegaWithT(t)
-	g.Expect(types.NewNumber(4).Divide(*types.NewNumber(0)).AsFloat64()).
+	g.Expect(NewNumber(4).Divide(*NewNumber(0)).AsFloat64()).
 		To(gomega.Equal(float64(4)))
 }
 
 func TestNumberCeil(t *testing.T) {
 	g := gomega.NewGomegaWithT(t)
-	g.Expect(types.NewNumber(4.006).Ceil(*types.NewNumber(0)).AsFloat64()).
+	g.Expect(NewNumber(4.006).Ceil(*NewNumber(0)).AsFloat64()).
 		To(gomega.Equal(float64(5)))
-	g.Expect(types.NewNumber(6.004).Ceil(*types.NewNumber(2)).AsFloat64()).
+	g.Expect(NewNumber(6.004).Ceil(*NewNumber(2)).AsFloat64()).
 		To(gomega.Equal(6.01))
 }
 
 func TestNumberFloor(t *testing.T) {
 	g := gomega.NewGomegaWithT(t)
-	g.Expect(types.NewNumber(4.006).Floor(*types.NewNumber(0)).AsFloat64()).
+	g.Expect(NewNumber(4.006).Floor(*NewNumber(0)).AsFloat64()).
 		To(gomega.Equal(float64(4)))
-	g.Expect(types.NewNumber(0.046).Floor(*types.NewNumber(2)).AsFloat64()).
+	g.Expect(NewNumber(0.046).Floor(*NewNumber(2)).AsFloat64()).
 		To(gomega.Equal(0.04))
 }
 
 func TestNumberRound(t *testing.T) {
 	g := gomega.NewGomegaWithT(t)
-	g.Expect(types.NewNumber(4.006).Round(*types.NewNumber(0)).AsFloat64()).
+	g.Expect(NewNumber(4.006).Round(*NewNumber(0)).AsFloat64()).
 		To(gomega.Equal(float64(4)))
-	g.Expect(types.NewNumber(4.006).Round(*types.NewNumber(2)).AsFloat64()).
+	g.Expect(NewNumber(4.006).Round(*NewNumber(2)).AsFloat64()).
 		To(gomega.Equal(4.01))
 }
 
 func TestRandomNumberInteger(t *testing.T) {
 	g := gomega.NewGomegaWithT(t)
 	for i := 0; i < 1000; i++ {
-		z := types.RandomNumberInt(*types.NewNumber(1), *types.NewNumber(10))
+		z := RandomNumberInt(*NewNumber(1), *NewNumber(10))
 		g.Expect(z.AsFloat64() > 0 && z.AsFloat64() < 11).
 			To(gomega.BeTrue())
 	}
@@ -294,7 +293,7 @@ func TestRandomNumberInteger(t *testing.T) {
 func TestRandomNumberFloat(t *testing.T) {
 	g := gomega.NewGomegaWithT(t)
 	for i := 0; i < 1000; i++ {
-		z := types.RandomNumberFloat(*types.NewNumber(1.5), *types.NewNumber(10.5))
+		z := RandomNumberFloat(*NewNumber(1.5), *NewNumber(10.5))
 		g.Expect(z.AsFloat64() > 1.49 && z.AsFloat64() < 10.51).
 			To(gomega.BeTrue())
 	}

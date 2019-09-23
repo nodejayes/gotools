@@ -2,15 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7253ef86-496f-4602-861f-e41926c1695a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/tests/number_test.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/types/number.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/types/divisible_number.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/types/divisible_number_test.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/types/double.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/types/double_test.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/types/integer.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/types/integer_test.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/number_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/types/number_test.go" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -18,8 +11,11 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="CoverageOptionsProvider">
+    <option name="myAddOrReplace" value="1" />
+  </component>
   <component name="CoverageViewManager">
-    <option name="myElementSize" value="503" />
+    <option name="myElementSize" value="508" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -176,10 +172,12 @@
     <MESSAGE value="add gomega to travis ci" />
     <MESSAGE value="make coveralls token secure" />
     <MESSAGE value="remove old coveralls yml" />
-    <option name="LAST_COMMIT_MESSAGE" value="remove old coveralls yml" />
+    <MESSAGE value="stitch all together in a number type" />
+    <option name="LAST_COMMIT_MESSAGE" value="stitch all together in a number type" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/gotools$go_test_github_com_nodejayes_gotools_test_types.out" NAME="go test test Coverage Results" MODIFIED="1569178737462" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/gotools$go_test_github_com_nodejayes_gotools_tests.out" NAME="go test github.com/nodejayes/gotools/tests Coverage Results" MODIFIED="1569270679870" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/gotools$TestDivisibleNumberCreateFromDivisibleNumber_in_github_com_nodejayes_gotools_types.out" NAME="TestDivisibleNumberCreateFromDivisibleNumber in github.com/nodejayes/gotools/types Coverage Results" MODIFIED="1569267555912" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>
