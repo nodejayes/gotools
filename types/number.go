@@ -234,3 +234,167 @@ func (i *Number) Round(precision Number) *Number {
 	fmtBuf.WriteString("f")
 	return NewNumber(fmt.Sprintf(fmtBuf.String(), i.value))
 }
+
+// calculate the absolute value of the current Number
+func (i *Number) Absolute() *Number {
+	return NewNumber(math.Abs(i.value))
+}
+
+// get the ArcSine from the current Number
+func (i *Number) ArcSine() *Number {
+	return NewNumber(math.Asin(i.value))
+}
+
+// get the ArcCosine from the current Number
+func (i *Number) ArcCosine() *Number {
+	return NewNumber(math.Acos(i.value))
+}
+
+// get the ArcTangent from the current Number
+func (i *Number) ArcTangent() *Number {
+	return NewNumber(math.Atan(i.value))
+}
+
+func (i *Number) InverseHyperbolicSine() *Number {
+	return NewNumber(math.Asinh(i.value))
+}
+
+func (i *Number) InverseHyperbolicCosine() *Number {
+	return NewNumber(math.Acosh(i.value))
+}
+
+func (i *Number) InverseHyperbolicTangent() *Number {
+	return NewNumber(math.Atanh(i.value))
+}
+
+func (i *Number) ArcTangent2(y Number) *Number {
+	return NewNumber(math.Atan2(i.value, y.AsFloat64()))
+}
+
+func (i *Number) Cosine() *Number {
+	return NewNumber(math.Cos(i.value))
+}
+
+func (i *Number) Sine() *Number {
+	return NewNumber(math.Sin(i.value))
+}
+
+func (i *Number) Tangent() *Number {
+	return NewNumber(math.Tan(i.value))
+}
+
+func (i *Number) HyperbolicSine() *Number {
+	return NewNumber(math.Sinh(i.value))
+}
+
+func (i *Number) HyperbolicCosine() *Number {
+	return NewNumber(math.Cosh(i.value))
+}
+
+func (i *Number) HyperbolicTangent() *Number {
+	return NewNumber(math.Tanh(i.value))
+}
+
+func (i *Number) CubeRoot() *Number {
+	return NewNumber(math.Cbrt(i.value))
+}
+
+func (i *Number) Copysign(v Number) *Number {
+	return NewNumber(math.Copysign(i.value, v.AsFloat64()))
+}
+
+func (i *Number) ErrorFunction() *Number {
+	return NewNumber(math.Erf(i.value))
+}
+
+func (i *Number) ComplementaryErrorFunction() *Number {
+	return NewNumber(math.Erfc(i.value))
+}
+
+func (i *Number) InverseErrorFunction() *Number {
+	return NewNumber(math.Erfinv(i.value))
+}
+
+func (i *Number) InverseComplementaryErrorFunction() *Number {
+	return NewNumber(math.Erfcinv(i.value))
+}
+
+func (i *Number) Exponential() *Number {
+	return NewNumber(math.Exp(i.value))
+}
+
+func (i *Number) Base2Exponential() *Number {
+	return NewNumber(math.Exp2(i.value))
+}
+
+func (i *Number) BaseEExponential() *Number {
+	return NewNumber(math.Expm1(i.value))
+}
+
+func (i *Number) Gamma() *Number {
+	return NewNumber(math.Gamma(i.value))
+}
+
+func (i *Number) BinaryExponential() *Number {
+	return NewNumber(math.Ilogb(i.value))
+}
+
+func (i *Number) SquareRoot() *Number {
+	return NewNumber(math.Sqrt(i.value))
+}
+
+func (i *Number) Power(n Number) *Number {
+	return NewNumber(math.Pow(i.value, n.AsFloat64()))
+}
+
+func (i *Number) NaturalLogarithm() *Number {
+	return NewNumber(math.Log(i.value))
+}
+
+func (i *Number) NaturalLogarithmPlus1() *Number {
+	return NewNumber(math.Log1p(i.value))
+}
+
+func (i *Number) BinaryLogarithm() *Number {
+	return NewNumber(math.Log2(i.value))
+}
+
+func (i *Number) DecimalLogarithm() *Number {
+	return NewNumber(math.Log10(i.value))
+}
+
+func (i *Number) BinaryExponent() *Number {
+	return NewNumber(math.Logb(i.value))
+}
+
+func (i *Number) Signbit() bool {
+	return math.Signbit(i.value)
+}
+
+func (i *Number) Modulo(n Number) *Number {
+	return NewNumber(math.Mod(i.value, n.AsFloat64()))
+}
+
+func (i *Number) OrderZeroBesselFirst() *Number {
+	return NewNumber(math.J0(i.value))
+}
+
+func (i *Number) OrderOneBesselFirst() *Number {
+	return NewNumber(math.J1(i.value))
+}
+
+func (i *Number) OrderNBesselFirst(n Number) *Number {
+	return NewNumber(math.Jn(i.AsInt(), n.AsFloat64()))
+}
+
+func (i *Number) OrderZeroBesselSecond() *Number {
+	return NewNumber(math.Y0(i.value))
+}
+
+func (i *Number) OrderOneBesselSecond() *Number {
+	return NewNumber(math.Y1(i.value))
+}
+
+func (i *Number) OrderNBesselSecond(n Number) *Number {
+	return NewNumber(math.Yn(i.AsInt(), n.AsFloat64()))
+}
