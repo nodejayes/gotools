@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7253ef86-496f-4602-861f-e41926c1695a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/runConfigurations/Test_All.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/types/string.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/types/number.go" beforeDir="false" afterPath="$PROJECT_DIR$/types/number.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/types/number_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/types/number_test.go" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -170,7 +168,8 @@
     <MESSAGE value="remove old coveralls yml" />
     <MESSAGE value="stitch all together in a number type" />
     <MESSAGE value="add interfaces" />
-    <option name="LAST_COMMIT_MESSAGE" value="add interfaces" />
+    <MESSAGE value="add some math to number" />
+    <option name="LAST_COMMIT_MESSAGE" value="add some math to number" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/gotools$go_test_github_com_nodejayes_gotools_test_types.out" NAME="go test test Coverage Results" MODIFIED="1569178737462" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
