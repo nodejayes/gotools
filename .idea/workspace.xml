@@ -2,8 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7253ef86-496f-4602-861f-e41926c1695a" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/interfaces/calculatable.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/interfaces/comparable.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/interfaces/convertible.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/interfaces/cuttable.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/interfaces/range_check.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/interfaces/roundable.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/interfaces/validatable.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/number_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/types/number_test.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/types/number.go" beforeDir="false" afterPath="$PROJECT_DIR$/types/number.go" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -50,15 +57,15 @@
     <property name="restartRequiresConfirmation" value="false" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\marku\go\src\github.com\nodejayes\gotools" />
-      <recent name="C:\Users\marku\go\src\github.com\nodejayes\gotools\src\types" />
-      <recent name="C:\Users\marku\go\src\github.com\nodejayes\gotools\test\types" />
-      <recent name="C:\Users\marku\go\src\github.com\nodejayes\gotools\test\types\integer" />
-      <recent name="C:\Users\marku\go\src\github.com\nodejayes\gotools\test\types\double" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\marku\go\src\github.com\nodejayes\gotools\src\types\double" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\marku\go\src\github.com\nodejayes\gotools\interfaces" />
+      <recent name="C:\Users\marku\go\src\github.com\nodejayes\gotools\interfaces\types" />
+      <recent name="C:\Users\marku\go\src\github.com\nodejayes\gotools" />
+      <recent name="C:\Users\marku\go\src\github.com\nodejayes\gotools\types" />
+      <recent name="C:\Users\marku\go\src\github.com\nodejayes\gotools\src\types" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -141,6 +148,9 @@
         <item itemvalue="Go Test.go test test" />
       </list>
     </recent_temporary>
+  </component>
+  <component name="StructureViewFactory">
+    <option name="ACTIVE_ACTIONS" value=",Show Private Members,ALPHA_COMPARATOR" />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
