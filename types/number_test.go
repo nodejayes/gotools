@@ -545,3 +545,11 @@ func TestNumber_SquareRoot(t *testing.T) {
 	g.Expect(NewNumber(1).SquareRoot().AsFloat64()).
 		To(gomega.Equal(math.Sqrt(1.0)))
 }
+
+func TestNumber_Clone(t *testing.T) {
+	g := gomega.NewGomegaWithT(t)
+	orginal := NewNumber(1)
+	clone := orginal.Clone()
+	g.Expect(orginal == clone).
+		To(gomega.BeFalse())
+}

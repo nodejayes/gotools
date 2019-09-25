@@ -135,6 +135,12 @@ func (i *Number) AsByte(precision Number) []byte {
 	return []byte(i.AsString(precision))
 }
 
+// clone the Number into a new Instance
+func (i *Number) Clone() *Number {
+	tmp := NewNumber(*i)
+	return tmp
+}
+
 // restricts the Number value to upper and lower
 func (i *Number) Clamp(lower, upper Number) *Number {
 	if i.value < lower.value {

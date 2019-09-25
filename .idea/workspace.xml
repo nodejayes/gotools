@@ -2,8 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7253ef86-496f-4602-861f-e41926c1695a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/types/string.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/interfaces/clonable.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/types/number.go" beforeDir="false" afterPath="$PROJECT_DIR$/types/number.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/types/number_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/types/number_test.go" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -97,6 +99,17 @@
       <pattern value="^TestDivisibleNumberCreateFromInt$" />
       <method v="2" />
     </configuration>
+    <configuration name="TestNumber_Clone in github.com/nodejayes/gotools/types" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="gotools" />
+      <working_directory value="$PROJECT_DIR$/types" />
+      <framework value="gotest" />
+      <kind value="PACKAGE" />
+      <package value="github.com/nodejayes/gotools/types" />
+      <directory value="$PROJECT_DIR$/" />
+      <filePath value="$PROJECT_DIR$/" />
+      <pattern value="^TestNumber_Clone$" />
+      <method v="2" />
+    </configuration>
     <configuration name="go test github.com/nodejayes/gotools/types" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
       <module name="gotools" />
       <working_directory value="$PROJECT_DIR$/types" />
@@ -122,14 +135,15 @@
       <item itemvalue="Go Test.TestDivisibleNumberCreateFromInt in github.com/nodejayes/gotools/types" />
       <item itemvalue="Go Test.go test github.com/nodejayes/gotools/types" />
       <item itemvalue="Go Test.TestDivisibleNumberCreateFromDivisibleNumber in github.com/nodejayes/gotools/types" />
+      <item itemvalue="Go Test.TestNumber_Clone in github.com/nodejayes/gotools/types" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Go Test.TestNumber_Clone in github.com/nodejayes/gotools/types" />
         <item itemvalue="Go Test.Test All" />
         <item itemvalue="Go Test.TestDivisibleNumberCreateFromDivisibleNumber in github.com/nodejayes/gotools/types" />
         <item itemvalue="Go Test.go test github.com/nodejayes/gotools/types" />
         <item itemvalue="Go Test.TestDivisibleNumberCreateFromInt in github.com/nodejayes/gotools/types" />
-        <item itemvalue="Go Test.go test test" />
       </list>
     </recent_temporary>
   </component>
@@ -169,12 +183,13 @@
     <MESSAGE value="stitch all together in a number type" />
     <MESSAGE value="add interfaces" />
     <MESSAGE value="add some math to number" />
-    <option name="LAST_COMMIT_MESSAGE" value="add some math to number" />
+    <MESSAGE value="WIP: begin String type" />
+    <option name="LAST_COMMIT_MESSAGE" value="WIP: begin String type" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/gotools$go_test_github_com_nodejayes_gotools_test_types.out" NAME="go test test Coverage Results" MODIFIED="1569178737462" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/gotools$go_test_github_com_nodejayes_gotools_tests.out" NAME="go test github.com/nodejayes/gotools/tests Coverage Results" MODIFIED="1569270679870" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-    <SUITE FILE_PATH="coverage/gotools$Test_All.out" NAME="Test All Coverage Results" MODIFIED="1569358002131" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/gotools$Test_All.out" NAME="Test All Coverage Results" MODIFIED="1569437617086" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/gotools$TestDivisibleNumberCreateFromDivisibleNumber_in_github_com_nodejayes_gotools_types.out" NAME="TestDivisibleNumberCreateFromDivisibleNumber in github.com/nodejayes/gotools/types Coverage Results" MODIFIED="1569267555912" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>
