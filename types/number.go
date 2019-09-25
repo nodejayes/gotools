@@ -10,6 +10,8 @@ import (
 	"time"
 )
 
+var ZERO = *NewNumber(0)
+
 // represent a Numeric Value int, int16, int32, int64, float32 or float64
 type Number struct {
 	value   float64
