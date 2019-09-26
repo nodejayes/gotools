@@ -161,3 +161,82 @@ func TestString_CharAt(t *testing.T) {
 	g.Expect(NewString("abc").CharAt(*NewNumber(0)).IsValid()).
 		To(gomega.BeFalse())
 }
+
+func TestString_ToUpperCase(t *testing.T) {
+	g := gomega.NewGomegaWithT(t)
+	g.Expect(NewString("abc").ToUpperCase().AsString()).
+		To(gomega.Equal("ABC"))
+	g.Expect(NewString("Abc").ToUpperCase().AsString()).
+		To(gomega.Equal("ABC"))
+	g.Expect(NewString("ABC").ToUpperCase().AsString()).
+		To(gomega.Equal("ABC"))
+}
+
+func TestString_ToLowerCase(t *testing.T) {
+	g := gomega.NewGomegaWithT(t)
+	g.Expect(NewString("ABC").ToLowerCase().AsString()).
+		To(gomega.Equal("abc"))
+	g.Expect(NewString("aBc").ToLowerCase().AsString()).
+		To(gomega.Equal("abc"))
+	g.Expect(NewString("abc").ToLowerCase().AsString()).
+		To(gomega.Equal("abc"))
+}
+
+func TestString_Equal(t *testing.T) {
+	g := gomega.NewGomegaWithT(t)
+	g.Expect(NewString("abc").Equal(*NewString("abc"))).
+		To(gomega.BeTrue())
+	g.Expect(NewString("abcd").Equal(*NewString("abc"))).
+		To(gomega.BeFalse())
+}
+
+func TestString_Pad(t *testing.T) {
+	g := gomega.NewGomegaWithT(t)
+	l := *NewNumber(8)
+	g.Expect(NewString("abc").Pad(l, *NewString("_-")).AsString()).
+		To(gomega.Equal("_-abc_-_"))
+	g.Expect(NewString("abcdefgh").Pad(l, *NewString("_-")).AsString()).
+		To(gomega.Equal("abcdefgh"))
+}
+
+func TestString_PadLeft(t *testing.T) {
+	g := gomega.NewGomegaWithT(t)
+	l := *NewNumber(8)
+	g.Expect(NewString("abc").PadLeft(l, *NewString(" ")).AsString()).
+		To(gomega.Equal("     abc"))
+	g.Expect(NewString("abcabcab").PadLeft(l, *NewString(" ")).AsString()).
+		To(gomega.Equal("abcabcab"))
+	g.Expect(NewString("abcabcabc").PadLeft(l, *NewString(" ")).AsString()).
+		To(gomega.Equal("abcabcabc"))
+}
+
+func TestString_PadRight(t *testing.T) {
+	g := gomega.NewGomegaWithT(t)
+	l := *NewNumber(8)
+	g.Expect(NewString("abc").PadRight(l, *NewString(" ")).AsString()).
+		To(gomega.Equal("abc     "))
+	g.Expect(NewString("abcabcab").PadRight(l, *NewString(" ")).AsString()).
+		To(gomega.Equal("abcabcab"))
+	g.Expect(NewString("abcabcabc").PadRight(l, *NewString(" ")).AsString()).
+		To(gomega.Equal("abcabcabc"))
+}
+
+func TestString_Concat(t *testing.T) {
+	g := gomega.NewGomegaWithT(t)
+	g.Expect(NewString("a").Concat(*NewString("b")).AsString()).
+		To(gomega.Equal("ab"))
+}
+
+func TestString_Repeat(t *testing.T) {
+	g := gomega.NewGomegaWithT(t)
+	times := NewNumber(2)
+	g.Expect(NewString("abc").Repeat(*times).AsString()).
+		To(gomega.Equal("abcabc"))
+}
+
+func TestString_Split(t *testing.T) {
+	g := gomega.NewGomegaWithT(t)
+	splitter := *NewString("b")
+	splitted := NewString("abcabc").Split(splitter)
+	g.Expect(splitted).To(gomega.HaveLen(3))
+}

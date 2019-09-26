@@ -548,8 +548,33 @@ func TestNumber_SquareRoot(t *testing.T) {
 
 func TestNumber_Clone(t *testing.T) {
 	g := gomega.NewGomegaWithT(t)
-	orginal := NewNumber(1)
-	clone := orginal.Clone()
-	g.Expect(orginal == clone).
+	original := NewNumber(1)
+	clone := original.Clone()
+	g.Expect(original == clone).
 		To(gomega.BeFalse())
+	original.Increment()
+	g.Expect(original.AsInt()).
+		To(gomega.Equal(2))
+	g.Expect(clone.AsInt()).
+		To(gomega.Equal(1))
+}
+
+func TestNumber_Increment(t *testing.T) {
+	g := gomega.NewGomegaWithT(t)
+	n := NewNumber(5)
+	g.Expect(n.AsInt()).
+		To(gomega.Equal(5))
+	n.Increment()
+	g.Expect(n.AsInt()).
+		To(gomega.Equal(6))
+}
+
+func TestNumber_Decrement(t *testing.T) {
+	g := gomega.NewGomegaWithT(t)
+	n := NewNumber(5)
+	g.Expect(n.AsInt()).
+		To(gomega.Equal(5))
+	n.Decrement()
+	g.Expect(n.AsInt()).
+		To(gomega.Equal(4))
 }

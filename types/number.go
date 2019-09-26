@@ -406,3 +406,13 @@ func (i *Number) OrderOneBesselSecond() *Number {
 func (i *Number) OrderNBesselSecond(n Number) *Number {
 	return NewNumber(math.Yn(i.AsInt(), n.AsFloat64()))
 }
+
+// increment the Number this means it was mutated!
+func (i *Number) Increment() {
+	i.value++
+}
+
+// decrement the Number this means it was mutated!
+func (i *Number) Decrement() {
+	i.value--
+}

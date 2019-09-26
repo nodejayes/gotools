@@ -1,6 +1,7 @@
 package types
 
 import (
+	"bytes"
 	"reflect"
 	"strings"
 )
@@ -108,78 +109,153 @@ func (s *String) CharAt(position Number) *String {
 	return NewString(c)
 }
 
+// all letters are mapped to Upper Case
 func (s *String) ToUpperCase() *String {
 	return NewString(strings.ToUpper(s.value))
 }
 
+// all letters are mapped to Lower Case
 func (s *String) ToLowerCase() *String {
 	return NewString(strings.ToLower(s.value))
 }
 
+// check if the String equals the given String
 func (s *String) Equal(v String) bool {
 	return s.value == v.value
 }
 
+// add the given String behind this String
+func (s *String) Concat(v String) *String {
+	buf := bytes.NewBuffer([]byte{})
+	buf.WriteString(s.value)
+	buf.WriteString(v.value)
+	return NewString(buf.String())
+}
+
+// fill the String with the given template String to the given length
+// on left and right side
 func (s *String) Pad(length Number, template String) *String {
-	return EmptyString()
+	myLength := s.Length()
+	if myLength.Equals(length) || myLength.IsAbove(length) {
+		return NewString(s)
+	}
+	var tmp []string
+	var tmpBefore []string
+	var tmpAfter []string
+	sw := true
+	for {
+		for _, c := range template.AsString() {
+			if !sw {
+				tmpBefore = append(tmpBefore, string(c))
+			} else {
+				tmpAfter = append(tmpAfter, string(c))
+			}
+			returnStringLength := NewNumber((len(tmpBefore) + len(tmpAfter)) + s.Length().AsInt())
+			if returnStringLength.Equals(length) || returnStringLength.IsAbove(length) {
+				tmp = append(tmpBefore, s.value)
+				tmp = append(tmp, tmpAfter...)
+				return NewString(strings.Join(tmp, ""))
+			}
+		}
+		sw = !sw
+	}
 }
 
+// same as Pad but append the template on the left
 func (s *String) PadLeft(length Number, template String) *String {
-	return EmptyString()
+	return takeCharsByMaxLength(*s.Length(), length, template).Concat(*s)
 }
 
+// same as Pad but append the template on the right
 func (s *String) PadRight(length Number, template String) *String {
-	return EmptyString()
+	return s.Concat(*takeCharsByMaxLength(*s.Length(), length, template))
 }
 
 func (s *String) Trim(template String) *String {
+	println("missing Implementation")
 	return EmptyString()
 }
 
 func (s *String) TrimLeft(template String) *String {
+	println("missing Implementation")
 	return EmptyString()
 }
 
 func (s *String) TrimRight(template String) *String {
+	println("missing Implementation")
 	return EmptyString()
 }
 
+// repeat the String for the given times
 func (s *String) Repeat(times Number) *String {
-	return EmptyString()
+	tmp := EmptyString()
+	for i := ZERO; i.IsBelow(times); i.Increment() {
+		tmp = tmp.Concat(*s)
+	}
+	return tmp
 }
 
 func (s *String) Replace(search String, replacer String) *String {
+	println("missing Implementation")
 	return EmptyString()
 }
 
 func (s *String) ReplaceAll(search String, replacer String) *String {
+	println("missing Implementation")
 	return EmptyString()
 }
 
-func (s *String) Split(template String) *String {
-	return EmptyString()
+// split the String by the template String
+func (s *String) Split(template String) []*String {
+	var tmp []*String
+	for _, v := range strings.Split(s.value, template.value) {
+		tmp = append(tmp, NewString(v))
+	}
+	return tmp
 }
 
 func (s *String) Insert(position Number, template String) *String {
+	println("missing Implementation")
 	return EmptyString()
 }
 
 func (s *String) Remove(position Number, count Number) *String {
+	println("missing Implementation")
 	return EmptyString()
 }
 
 func (s *String) SubString(position Number, length Number) *String {
+	println("missing Implementation")
 	return EmptyString()
 }
 
 func (s *String) IndexOf(template String) *Number {
+	println("missing Implementation")
 	return NewNumber(0)
 }
 
 func (s *String) LastIndexOf(template String) *Number {
+	println("missing Implementation")
 	return NewNumber(0)
 }
 
 func (s *String) TextBetween(begin, end String) []*String {
+	println("missing Implementation")
 	return []*String{EmptyString()}
+}
+
+func takeCharsByMaxLength(stringLength, takenLength Number, template String) *String {
+	if stringLength.Equals(takenLength) || stringLength.IsAbove(takenLength) {
+		return EmptyString()
+	}
+	var tmp []string
+	for {
+		for _, c := range template.AsString() {
+			tmp = append(tmp, string(c))
+			returnStringLength := NewNumber((len(tmp)) + stringLength.AsInt())
+			if returnStringLength.Equals(takenLength) || returnStringLength.IsAbove(takenLength) {
+				return NewString(strings.Join(tmp, ""))
+			}
+		}
+	}
 }
