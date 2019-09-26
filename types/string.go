@@ -225,8 +225,12 @@ func (s *String) Remove(position Number, count Number) *String {
 }
 
 func (s *String) SubString(position Number, length Number) *String {
-	println("missing Implementation")
-	return EmptyString()
+	tmp := []rune(s.value)
+	if length.IsBelow(ZERO) {
+		return NewString(string(tmp[position.AsInt():]))
+	}
+	end := position.Add(length)
+	return NewString(string(tmp[position.AsInt():end.AsInt()]))
 }
 
 // get the start Index of the template String from the First found match

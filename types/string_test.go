@@ -283,3 +283,11 @@ func TestString_LastIndexOf(t *testing.T) {
 	g.Expect(NewString("abcabcabcabc").LastIndexOf(*NewString("b")).AsInt()).
 		To(gomega.Equal(10))
 }
+
+func TestString_SubString(t *testing.T) {
+	g := gomega.NewGomegaWithT(t)
+	g.Expect(NewString("abcdefgh").SubString(*NewNumber(1), *NewNumber(2)).AsString()).
+		To(gomega.Equal("bc"))
+	g.Expect(NewString("abcdefgh").SubString(*NewNumber(1), *NewNumber(-1)).AsString()).
+		To(gomega.Equal("bcdefgh"))
+}
