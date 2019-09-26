@@ -240,3 +240,26 @@ func TestString_Split(t *testing.T) {
 	splitted := NewString("abcabc").Split(splitter)
 	g.Expect(splitted).To(gomega.HaveLen(3))
 }
+
+func TestString_TextBetween(t *testing.T) {
+	g := gomega.NewGomegaWithT(t)
+	tmp := NewString("abcdefg").
+		TextBetween(*NewString("a"), *NewString("c"))
+	tmp2 := NewString("abcdefgabcdefg").
+		TextBetween(*NewString("a"), *NewString("c"))
+	tmp3 := NewString("abbcbbcdefgabcdefg").
+		TextBetween(*NewString("a"), *NewString("c"))
+	g.Expect(len(tmp)).
+		To(gomega.Equal(1))
+	g.Expect(tmp[0].AsString()).To(gomega.Equal("b"))
+
+	g.Expect(len(tmp2)).
+		To(gomega.Equal(2))
+	g.Expect(tmp2[0].AsString()).To(gomega.Equal("b"))
+	g.Expect(tmp2[1].AsString()).To(gomega.Equal("b"))
+
+	g.Expect(len(tmp3)).
+		To(gomega.Equal(2))
+	g.Expect(tmp3[0].AsString()).To(gomega.Equal("bb"))
+	g.Expect(tmp3[1].AsString()).To(gomega.Equal("b"))
+}

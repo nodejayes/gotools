@@ -239,9 +239,17 @@ func (s *String) LastIndexOf(template String) *Number {
 	return NewNumber(0)
 }
 
+// get the Text as String between the two Strings begin and end
 func (s *String) TextBetween(begin, end String) []*String {
-	println("missing Implementation")
-	return []*String{EmptyString()}
+	var tmp []*String
+	for _, split := range s.Split(begin) {
+		subsplit := split.Split(end)
+		if len(subsplit) < 1 || subsplit[0].Equal(*EmptyString()) {
+			continue
+		}
+		tmp = append(tmp, subsplit[0])
+	}
+	return tmp
 }
 
 func takeCharsByMaxLength(stringLength, takenLength Number, template String) *String {
