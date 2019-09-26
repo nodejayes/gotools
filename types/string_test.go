@@ -263,3 +263,23 @@ func TestString_TextBetween(t *testing.T) {
 	g.Expect(tmp3[0].AsString()).To(gomega.Equal("bb"))
 	g.Expect(tmp3[1].AsString()).To(gomega.Equal("b"))
 }
+
+func TestString_IndexOf(t *testing.T) {
+	g := gomega.NewGomegaWithT(t)
+	g.Expect(NewString("abc").IndexOf(*NewString("b")).AsInt()).
+		To(gomega.Equal(1))
+	g.Expect(NewString("abc").IndexOf(*NewString("x")).AsInt()).
+		To(gomega.Equal(-1))
+	g.Expect(NewString("abcabcabcabc").IndexOf(*NewString("b")).AsInt()).
+		To(gomega.Equal(1))
+}
+
+func TestString_LastIndexOf(t *testing.T) {
+	g := gomega.NewGomegaWithT(t)
+	g.Expect(NewString("abc").LastIndexOf(*NewString("b")).AsInt()).
+		To(gomega.Equal(1))
+	g.Expect(NewString("abc").LastIndexOf(*NewString("x")).AsInt()).
+		To(gomega.Equal(-1))
+	g.Expect(NewString("abcabcabcabc").LastIndexOf(*NewString("b")).AsInt()).
+		To(gomega.Equal(10))
+}

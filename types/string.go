@@ -229,14 +229,14 @@ func (s *String) SubString(position Number, length Number) *String {
 	return EmptyString()
 }
 
+// get the start Index of the template String from the First found match
 func (s *String) IndexOf(template String) *Number {
-	println("missing Implementation")
-	return NewNumber(0)
+	return NewNumber(strings.Index(s.value, template.value))
 }
 
+// get the start Index of the template String from the Last found match
 func (s *String) LastIndexOf(template String) *Number {
-	println("missing Implementation")
-	return NewNumber(0)
+	return NewNumber(strings.LastIndex(s.value, template.value))
 }
 
 // get the Text as String between the two Strings begin and end
