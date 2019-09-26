@@ -11,6 +11,9 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="CoverageViewManager">
+    <option name="myElementSize" value="356" />
+  </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
@@ -69,7 +72,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Go Test.TestString_SubString in github.com/nodejayes/gotools/types">
+  <component name="RunManager" selected="Go Test.Test types">
     <configuration name="Test types" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true">
       <module name="gotools" />
       <working_directory value="$PROJECT_DIR$/types" />
@@ -80,7 +83,7 @@
       <filePath value="$PROJECT_DIR$/" />
       <method v="2" />
     </configuration>
-    <configuration name="TestString_Repeat in github.com/nodejayes/gotools/types" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+    <configuration name="TestString_Insert in github.com/nodejayes/gotools/types" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
       <module name="gotools" />
       <working_directory value="$PROJECT_DIR$/types" />
       <framework value="gotest" />
@@ -88,10 +91,10 @@
       <package value="github.com/nodejayes/gotools/types" />
       <directory value="$PROJECT_DIR$/" />
       <filePath value="$PROJECT_DIR$/" />
-      <pattern value="^TestString_Repeat$" />
+      <pattern value="^TestString_Insert$" />
       <method v="2" />
     </configuration>
-    <configuration name="TestString_Split in github.com/nodejayes/gotools/types" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+    <configuration name="TestString_Remove in github.com/nodejayes/gotools/types" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
       <module name="gotools" />
       <working_directory value="$PROJECT_DIR$/types" />
       <framework value="gotest" />
@@ -99,7 +102,7 @@
       <package value="github.com/nodejayes/gotools/types" />
       <directory value="$PROJECT_DIR$/" />
       <filePath value="$PROJECT_DIR$/" />
-      <pattern value="^TestString_Split$" />
+      <pattern value="^TestString_Remove$" />
       <method v="2" />
     </configuration>
     <configuration name="TestString_SubString in github.com/nodejayes/gotools/types" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
@@ -126,18 +129,18 @@
     </configuration>
     <list>
       <item itemvalue="Go Test.Test types" />
-      <item itemvalue="Go Test.TestString_Repeat in github.com/nodejayes/gotools/types" />
-      <item itemvalue="Go Test.TestString_Split in github.com/nodejayes/gotools/types" />
       <item itemvalue="Go Test.TestString_TextBetween in github.com/nodejayes/gotools/types" />
       <item itemvalue="Go Test.TestString_SubString in github.com/nodejayes/gotools/types" />
+      <item itemvalue="Go Test.TestString_Remove in github.com/nodejayes/gotools/types" />
+      <item itemvalue="Go Test.TestString_Insert in github.com/nodejayes/gotools/types" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Go Test.TestString_SubString in github.com/nodejayes/gotools/types" />
         <item itemvalue="Go Test.Test types" />
+        <item itemvalue="Go Test.TestString_Insert in github.com/nodejayes/gotools/types" />
+        <item itemvalue="Go Test.TestString_Remove in github.com/nodejayes/gotools/types" />
+        <item itemvalue="Go Test.TestString_SubString in github.com/nodejayes/gotools/types" />
         <item itemvalue="Go Test.TestString_TextBetween in github.com/nodejayes/gotools/types" />
-        <item itemvalue="Go Test.TestString_Split in github.com/nodejayes/gotools/types" />
-        <item itemvalue="Go Test.TestString_Repeat in github.com/nodejayes/gotools/types" />
       </list>
     </recent_temporary>
   </component>
@@ -170,22 +173,22 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="727" height="464" key="DebuggerActiveHint/0.0.1920.1040@0.0.1920.1040" timestamp="1569528897116" />
-    <state width="1877" height="282" key="GridCell.Tab.0.bottom" timestamp="1569529899594">
+    <state width="1877" height="282" key="GridCell.Tab.0.bottom" timestamp="1569531696677">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1569529899594" />
-    <state width="1877" height="282" key="GridCell.Tab.0.center" timestamp="1569529899593">
+    <state width="1877" height="282" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1569531696677" />
+    <state width="1877" height="282" key="GridCell.Tab.0.center" timestamp="1569531696677">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1569529899593" />
-    <state width="1877" height="282" key="GridCell.Tab.0.left" timestamp="1569529899593">
+    <state width="1877" height="282" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1569531696677" />
+    <state width="1877" height="282" key="GridCell.Tab.0.left" timestamp="1569531696677">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1569529899593" />
-    <state width="1877" height="282" key="GridCell.Tab.0.right" timestamp="1569529899594">
+    <state width="1877" height="282" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1569531696677" />
+    <state width="1877" height="282" key="GridCell.Tab.0.right" timestamp="1569531696677">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1569529899594" />
+    <state width="1877" height="282" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1569531696677" />
     <state width="1877" height="348" key="GridCell.Tab.1.bottom" timestamp="1569529217783">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -212,6 +215,7 @@
     <state x="447" y="165" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1569523869405" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/gotools$Test_types.out" NAME="Test types Coverage Results" MODIFIED="1569527925874" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/gotools$Test_types.out" NAME="Test types Coverage Results" MODIFIED="1569531696662" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/gotools$TestString_Insert_in_github_com_nodejayes_gotools_types.out" NAME="TestString_Insert in github.com/nodejayes/gotools/types Coverage Results" MODIFIED="1569531692587" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>

@@ -291,3 +291,27 @@ func TestString_SubString(t *testing.T) {
 	g.Expect(NewString("abcdefgh").SubString(*NewNumber(1), *NewNumber(-1)).AsString()).
 		To(gomega.Equal("bcdefgh"))
 }
+
+func TestString_Remove(t *testing.T) {
+	g := gomega.NewGomegaWithT(t)
+	g.Expect(NewString("abbbbc").Remove(*NewNumber(1), *NewNumber(3)).AsString()).
+		To(gomega.Equal("abc"))
+	g.Expect(NewString("abbbbc").Remove(*NewNumber(1), *NewNumber(20)).AsString()).
+		To(gomega.Equal("a"))
+	g.Expect(NewString("abbbbc").Remove(*NewNumber(-1), *NewNumber(20)).AsString()).
+		To(gomega.Equal(""))
+}
+
+func TestString_Insert(t *testing.T) {
+	g := gomega.NewGomegaWithT(t)
+	g.Expect(NewString("abc").Insert(*NewNumber(1), *NewString("x")).AsString()).
+		To(gomega.Equal("axbc"))
+	g.Expect(NewString("abc").Insert(*NewNumber(0), *NewString("x")).AsString()).
+		To(gomega.Equal("xabc"))
+	g.Expect(NewString("abc").Insert(*NewNumber(3), *NewString("x")).AsString()).
+		To(gomega.Equal("abcx"))
+	g.Expect(NewString("abc").Insert(*NewNumber(-1), *NewString("x")).AsString()).
+		To(gomega.Equal("xabc"))
+	g.Expect(NewString("abc").Insert(*NewNumber(4), *NewString("x")).AsString()).
+		To(gomega.Equal("abcx"))
+}

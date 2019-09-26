@@ -214,16 +214,43 @@ func (s *String) Split(template String) []*String {
 	return tmp
 }
 
+// insert the given template String at position
+// if the position is outside the string
+// the template was added before or behind
 func (s *String) Insert(position Number, template String) *String {
-	println("missing Implementation")
-	return EmptyString()
+	isBehind := position.IsAbove(*s.Length()) || position.Equals(*s.Length())
+	isBefore := position.IsBelow(ZERO) || position.Equals(ZERO)
+	if isBehind {
+		return s.Concat(template)
+	}
+	if isBefore {
+		return template.Concat(*s)
+	}
+	before := NewString(s.value[0:position.AsInt()])
+	after := NewString(s.value[position.AsInt():])
+	return before.Concat(template).Concat(*after)
 }
 
+// remove the count letters from position
 func (s *String) Remove(position Number, count Number) *String {
-	println("missing Implementation")
-	return EmptyString()
+	end := position.Add(count)
+	noBefore := position.Equals(ZERO) || position.IsBelow(ZERO)
+	noAfter := end.IsAbove(*s.Length())
+	if noBefore && noAfter {
+		return EmptyString()
+	}
+	before := EmptyString()
+	after := EmptyString()
+	if !noBefore {
+		before = NewString(s.value[0:position.AsInt()])
+	}
+	if !noAfter {
+		after = NewString(s.value[end.AsInt():])
+	}
+	return before.Concat(*after)
 }
 
+// get a String from position and for the Length of the second argument
 func (s *String) SubString(position Number, length Number) *String {
 	tmp := []rune(s.value)
 	if length.IsBelow(ZERO) {
