@@ -3,6 +3,7 @@ package types
 import (
 	"bytes"
 	"reflect"
+	"regexp"
 	"strings"
 )
 
@@ -84,6 +85,11 @@ func (s *String) Clone() *String {
 // get the String as a Go String
 func (s *String) AsString() string {
 	return s.value
+}
+
+// get the String as Byte Array
+func (s *String) AsByte() []byte {
+	return []byte(s.value)
 }
 
 // get the String as a Number
@@ -171,19 +177,63 @@ func (s *String) PadRight(length Number, template String) *String {
 	return s.Concat(*takeCharsByMaxLength(*s.Length(), length, template))
 }
 
+// check if the String begins with the Template
+func (s *String) StartWith(template String) bool {
+	idx := 0
+	for _, c := range template.AsString() {
+		if !s.CharAt(*NewNumber(idx + 1)).Equal(*NewString(string(c))) {
+			return false
+		}
+		idx++
+	}
+	return true
+}
+
+// check if the String ends with the Template
+func (s *String) EndWith(template String) bool {
+	idx := s.Length().AsInt()
+	for _, c := range template.Reverse().AsString() {
+		c1 := *NewString(string(c))
+		c2 := s.CharAt(*NewNumber(idx))
+		if !c2.Equal(c1) {
+			return false
+		}
+		idx--
+	}
+	return true
+}
+
+// turn around the String
+func (s *String) Reverse() *String {
+	runes := []rune(s.value)
+	for i, j := 0, len(runes)-1; i < j; i, j = i+1, j-1 {
+		runes[i], runes[j] = runes[j], runes[i]
+	}
+	return NewString(string(runes))
+}
+
+// remove the template from the String at start and end
 func (s *String) Trim(template String) *String {
-	println("missing Implementation")
-	return EmptyString()
+	if !s.StartWith(template) && !s.EndWith(template) {
+		return NewString(s.value)
+	}
+	return replaceStart(*replaceStart(*s, template).Reverse(), template).Reverse()
 }
 
+// remove the template from the String at start
 func (s *String) TrimLeft(template String) *String {
-	println("missing Implementation")
-	return EmptyString()
+	if !s.StartWith(template) {
+		return NewString(s.value)
+	}
+	return replaceStart(*s, template)
 }
 
+// remove the template from the String at end
 func (s *String) TrimRight(template String) *String {
-	println("missing Implementation")
-	return EmptyString()
+	if !s.EndWith(template) {
+		return NewString(s.value)
+	}
+	return replaceStart(*s.Reverse(), template).Reverse()
 }
 
 // repeat the String for the given times
@@ -195,14 +245,14 @@ func (s *String) Repeat(times Number) *String {
 	return tmp
 }
 
+// replace the first match in the String with the replacer
 func (s *String) Replace(search String, replacer String) *String {
-	println("missing Implementation")
-	return EmptyString()
+	return NewString(strings.Replace(s.value, search.value, replacer.value, 1))
 }
 
+// replace all matches in the String with the replacer
 func (s *String) ReplaceAll(search String, replacer String) *String {
-	println("missing Implementation")
-	return EmptyString()
+	return NewString(strings.Replace(s.value, search.value, replacer.value, -1))
 }
 
 // split the String by the template String
@@ -283,6 +333,38 @@ func (s *String) TextBetween(begin, end String) []*String {
 	return tmp
 }
 
+// check if the given search String in the String
+func (s *String) Contains(search String) bool {
+	return strings.Contains(s.value, search.value)
+}
+
+// count the matches of search in the String
+func (s *String) ContainsCount(search String) *Number {
+	return NewNumber(strings.Count(s.value, search.value))
+}
+
+// truncate the string by count with the replacer at the end
+// the replacer was counted to the string length that was truncated!
+func (s *String) Truncate(count Number, replacer String) *String {
+	replacerIsToLong := replacer.Length().IsAbove(count) || replacer.Length().Equals(count)
+	if replacerIsToLong {
+		return NewString(replacer.value[0:count.AsInt()])
+	}
+	takeLength := count.Subtract(*replacer.Length())
+	tmp := NewString(s.value[0:takeLength.AsInt()])
+	return tmp.Concat(replacer)
+}
+
+// runs a Regular Expression again the String and return the result
+func (s *String) RegularExpression(regularExpression String) bool {
+	r, err := regexp.Match(regularExpression.value, s.AsByte())
+	if err != nil {
+		println("ERROR in String RegularExpression: " + err.Error())
+		return false
+	}
+	return r
+}
+
 func takeCharsByMaxLength(stringLength, takenLength Number, template String) *String {
 	if stringLength.Equals(takenLength) || stringLength.IsAbove(takenLength) {
 		return EmptyString()
@@ -297,4 +379,13 @@ func takeCharsByMaxLength(stringLength, takenLength Number, template String) *St
 			}
 		}
 	}
+}
+
+func replaceStart(target, template String) *String {
+	templateLength := template.Length().AsInt()
+	tmp := target.Clone()
+	for tmp.StartWith(template) {
+		tmp = NewString(tmp.value[templateLength:])
+	}
+	return tmp
 }

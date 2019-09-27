@@ -315,3 +315,97 @@ func TestString_Insert(t *testing.T) {
 	g.Expect(NewString("abc").Insert(*NewNumber(4), *NewString("x")).AsString()).
 		To(gomega.Equal("abcx"))
 }
+
+func TestString_Trim(t *testing.T) {
+	g := gomega.NewGomegaWithT(t)
+	g.Expect(NewString("  abc  ").Trim(*NewString(" ")).AsString()).
+		To(gomega.Equal("abc"))
+	g.Expect(NewString("abc").Trim(*NewString(" ")).AsString()).
+		To(gomega.Equal("abc"))
+}
+
+func TestString_TrimLeft(t *testing.T) {
+	g := gomega.NewGomegaWithT(t)
+	g.Expect(NewString("  abc  ").TrimLeft(*NewString(" ")).AsString()).
+		To(gomega.Equal("abc  "))
+	g.Expect(NewString("abc").TrimLeft(*NewString(" ")).AsString()).
+		To(gomega.Equal("abc"))
+}
+
+func TestString_TrimRight(t *testing.T) {
+	g := gomega.NewGomegaWithT(t)
+	g.Expect(NewString("  abc  ").TrimRight(*NewString(" ")).AsString()).
+		To(gomega.Equal("  abc"))
+	g.Expect(NewString("abc").TrimRight(*NewString(" ")).AsString()).
+		To(gomega.Equal("abc"))
+}
+
+func TestString_StartWith(t *testing.T) {
+	g := gomega.NewGomegaWithT(t)
+	g.Expect(NewString(" bc").StartWith(*NewString(" b"))).
+		To(gomega.BeTrue())
+	g.Expect(NewString(" bc").StartWith(*NewString("_b"))).
+		To(gomega.BeFalse())
+}
+
+func TestString_EndWith(t *testing.T) {
+	g := gomega.NewGomegaWithT(t)
+	g.Expect(NewString(" bc b").EndWith(*NewString(" b"))).
+		To(gomega.BeTrue())
+	g.Expect(NewString(" bc").EndWith(*NewString("_b"))).
+		To(gomega.BeFalse())
+}
+
+func TestString_Reverse(t *testing.T) {
+	g := gomega.NewGomegaWithT(t)
+	g.Expect(NewString("abc").Reverse().AsString()).
+		To(gomega.Equal("cba"))
+}
+
+func TestString_Replace(t *testing.T) {
+	g := gomega.NewGomegaWithT(t)
+	g.Expect(NewString("oink oink oink").Replace(*NewString("k"), *NewString("x")).AsString()).
+		To(gomega.Equal("oinx oink oink"))
+	g.Expect(NewString("oink oink oink").Replace(*NewString("z"), *NewString("x")).AsString()).
+		To(gomega.Equal("oink oink oink"))
+}
+
+func TestString_ReplaceAll(t *testing.T) {
+	g := gomega.NewGomegaWithT(t)
+	g.Expect(NewString("oink oink oink").ReplaceAll(*NewString("k"), *NewString("x")).AsString()).
+		To(gomega.Equal("oinx oinx oinx"))
+	g.Expect(NewString("oink oink oink").ReplaceAll(*NewString("z"), *NewString("x")).AsString()).
+		To(gomega.Equal("oink oink oink"))
+}
+
+func TestString_Contains(t *testing.T) {
+	g := gomega.NewGomegaWithT(t)
+	g.Expect(NewString("abc").Contains(*NewString("b"))).To(gomega.BeTrue())
+	g.Expect(NewString("abc").Contains(*NewString("x"))).To(gomega.BeFalse())
+}
+
+func TestString_ContainsCount(t *testing.T) {
+	g := gomega.NewGomegaWithT(t)
+	g.Expect(NewString("abcabc").ContainsCount(*NewString("b")).AsInt()).To(gomega.Equal(2))
+	g.Expect(NewString("abcabc").ContainsCount(*NewString("z")).AsInt()).To(gomega.Equal(0))
+}
+
+func TestString_Truncate(t *testing.T) {
+	g := gomega.NewGomegaWithT(t)
+	g.Expect(NewString("##-##Chars##-##").Truncate(*NewNumber(5), *EmptyString()).AsString()).To(gomega.Equal("##-##"))
+	g.Expect(NewString("##-##Chars##-##").Truncate(*NewNumber(5), *NewString("...")).AsString()).To(gomega.Equal("##..."))
+	g.Expect(NewString("##-##Chars##-##").Truncate(*NewNumber(5), *NewString(".....")).AsString()).To(gomega.Equal("....."))
+	g.Expect(NewString("##-##Chars##-##").Truncate(*NewNumber(5), *NewString("......")).AsString()).To(gomega.Equal("....."))
+}
+
+func TestString_AsByte(t *testing.T) {
+	g := gomega.NewGomegaWithT(t)
+	g.Expect(NewString("abc").AsByte()).To(gomega.Equal([]byte("abc")))
+}
+
+func TestString_RegularExpression(t *testing.T) {
+	g := gomega.NewGomegaWithT(t)
+	g.Expect(NewString("peach").RegularExpression(*NewString("p([a-z]+)ch"))).To(gomega.BeTrue())
+	g.Expect(NewString("mario").RegularExpression(*NewString("p([a-z]+)ch"))).To(gomega.BeFalse())
+	g.Expect(NewString("peach").RegularExpression(*NewString("p([a-z]+"))).To(gomega.BeFalse())
+}
