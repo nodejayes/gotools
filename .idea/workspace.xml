@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ff1b7be7-7005-4269-af52-115c27a1f174" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/types/time_span.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/types/time_span_test.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/types/time_span.go" beforeDir="false" afterPath="$PROJECT_DIR$/types/time_span.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,7 +77,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Go Test.Test types">
+  <component name="RunManager" selected="Go Test.TestNewTimeSpanFromISOString in github.com/nodejayes/gotools/types">
     <configuration name="Test types" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true">
       <module name="gotools" />
       <working_directory value="$PROJECT_DIR$/types" />
@@ -85,6 +86,17 @@
       <package value="github.com/nodejayes/gotools/types" />
       <directory value="$PROJECT_DIR$/" />
       <filePath value="$PROJECT_DIR$/" />
+      <method v="2" />
+    </configuration>
+    <configuration name="TestNewTimeSpanFromISOString in github.com/nodejayes/gotools/types" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="gotools" />
+      <working_directory value="$PROJECT_DIR$/types" />
+      <framework value="gotest" />
+      <kind value="PACKAGE" />
+      <package value="github.com/nodejayes/gotools/types" />
+      <directory value="$PROJECT_DIR$/" />
+      <filePath value="$PROJECT_DIR$/" />
+      <pattern value="^TestNewTimeSpanFromISOString$" />
       <method v="2" />
     </configuration>
     <configuration name="TestString_EndWith in github.com/nodejayes/gotools/types" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
@@ -109,17 +121,6 @@
       <pattern value="^TestString_RegularExpression$" />
       <method v="2" />
     </configuration>
-    <configuration name="TestString_StartWith in github.com/nodejayes/gotools/types" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
-      <module name="gotools" />
-      <working_directory value="$PROJECT_DIR$/types" />
-      <framework value="gotest" />
-      <kind value="PACKAGE" />
-      <package value="github.com/nodejayes/gotools/types" />
-      <directory value="$PROJECT_DIR$/" />
-      <filePath value="$PROJECT_DIR$/" />
-      <pattern value="^TestString_StartWith$" />
-      <method v="2" />
-    </configuration>
     <configuration name="TestString_TrimRight in github.com/nodejayes/gotools/types" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
       <module name="gotools" />
       <working_directory value="$PROJECT_DIR$/types" />
@@ -133,20 +134,23 @@
     </configuration>
     <list>
       <item itemvalue="Go Test.Test types" />
-      <item itemvalue="Go Test.TestString_StartWith in github.com/nodejayes/gotools/types" />
       <item itemvalue="Go Test.TestString_EndWith in github.com/nodejayes/gotools/types" />
       <item itemvalue="Go Test.TestString_TrimRight in github.com/nodejayes/gotools/types" />
       <item itemvalue="Go Test.TestString_RegularExpression in github.com/nodejayes/gotools/types" />
+      <item itemvalue="Go Test.TestNewTimeSpanFromISOString in github.com/nodejayes/gotools/types" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Go Test.TestNewTimeSpanFromISOString in github.com/nodejayes/gotools/types" />
         <item itemvalue="Go Test.Test types" />
         <item itemvalue="Go Test.TestString_RegularExpression in github.com/nodejayes/gotools/types" />
         <item itemvalue="Go Test.TestString_TrimRight in github.com/nodejayes/gotools/types" />
         <item itemvalue="Go Test.TestString_EndWith in github.com/nodejayes/gotools/types" />
-        <item itemvalue="Go Test.TestString_StartWith in github.com/nodejayes/gotools/types" />
       </list>
     </recent_temporary>
+  </component>
+  <component name="StructureViewFactory">
+    <option name="ACTIVE_ACTIONS" value=",Show Private Members" />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
@@ -175,42 +179,42 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="414" y="177" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1569523945150" />
-    <state width="727" height="464" key="DebuggerActiveHint" timestamp="1569528897116">
+    <state width="727" height="464" key="DebuggerActiveHint" timestamp="1569670973031">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="727" height="464" key="DebuggerActiveHint/0.0.1920.1040@0.0.1920.1040" timestamp="1569528897116" />
-    <state width="1877" height="282" key="GridCell.Tab.0.bottom" timestamp="1569615676457">
+    <state width="727" height="464" key="DebuggerActiveHint/0.0.1920.1040@0.0.1920.1040" timestamp="1569670973031" />
+    <state width="1877" height="348" key="GridCell.Tab.0.bottom" timestamp="1569670981789">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1569615676457" />
-    <state width="1877" height="282" key="GridCell.Tab.0.center" timestamp="1569615676456">
+    <state width="1877" height="348" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1569670981789" />
+    <state width="1877" height="348" key="GridCell.Tab.0.center" timestamp="1569670981789">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1569615676456" />
-    <state width="1877" height="282" key="GridCell.Tab.0.left" timestamp="1569615676455">
+    <state width="1877" height="348" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1569670981789" />
+    <state width="1877" height="348" key="GridCell.Tab.0.left" timestamp="1569670981789">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1569615676455" />
-    <state width="1877" height="282" key="GridCell.Tab.0.right" timestamp="1569615676457">
+    <state width="1877" height="348" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1569670981789" />
+    <state width="1877" height="348" key="GridCell.Tab.0.right" timestamp="1569670981789">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1569615676457" />
-    <state width="1877" height="348" key="GridCell.Tab.1.bottom" timestamp="1569615525076">
+    <state width="1877" height="348" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1569670981789" />
+    <state width="1877" height="348" key="GridCell.Tab.1.bottom" timestamp="1569670982278">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="348" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1569615525076" />
-    <state width="1877" height="348" key="GridCell.Tab.1.center" timestamp="1569615525076">
+    <state width="1877" height="348" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1569670982278" />
+    <state width="1877" height="348" key="GridCell.Tab.1.center" timestamp="1569670982278">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="348" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1569615525076" />
-    <state width="1877" height="348" key="GridCell.Tab.1.left" timestamp="1569615525076">
+    <state width="1877" height="348" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1569670982278" />
+    <state width="1877" height="348" key="GridCell.Tab.1.left" timestamp="1569670982278">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="348" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1569615525076" />
-    <state width="1877" height="348" key="GridCell.Tab.1.right" timestamp="1569615525076">
+    <state width="1877" height="348" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1569670982278" />
+    <state width="1877" height="348" key="GridCell.Tab.1.right" timestamp="1569670982278">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="348" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1569615525076" />
+    <state width="1877" height="348" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1569670982278" />
     <state x="710" y="234" key="RollbackChangesDialog" timestamp="1569529233470">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -231,6 +235,21 @@
           <url>file://$PROJECT_DIR$/types/string_test.go</url>
           <line>409</line>
           <option name="timeStamp" value="6" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
+          <url>file://$PROJECT_DIR$/types/time_span.go</url>
+          <line>197</line>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
+          <url>file://$PROJECT_DIR$/types/time_span.go</url>
+          <line>177</line>
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
+          <url>file://$PROJECT_DIR$/types/time_span.go</url>
+          <line>163</line>
+          <option name="timeStamp" value="9" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
