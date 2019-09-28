@@ -2,8 +2,6 @@ package types
 
 import (
 	"errors"
-	"strconv"
-	"time"
 )
 
 var millisecondsPerSecond = NewNumber(1000)
@@ -18,7 +16,11 @@ var secondsPerMinute = secondsPerHour.Divide(*NewNumber(60))
 var millisecondsPerMinute = secondsPerMinute.Multiply(*millisecondsPerSecond)
 
 type TimeSpan struct {
-	value                 time.Time
+	day                   int64
+	hour                  int64
+	minute                int64
+	second                int64
+	millisecond           int64
 	isValid               bool
 	MillisecondsPerSecond *Number
 	HoursPerDay           *Number
@@ -34,7 +36,11 @@ type TimeSpan struct {
 
 func EmptyTimeSpan() *TimeSpan {
 	return &TimeSpan{
-		value:                 time.Now().UTC(),
+		day:                   0,
+		hour:                  0,
+		minute:                0,
+		second:                0,
+		millisecond:           0,
 		isValid:               false,
 		MillisecondsPerSecond: millisecondsPerSecond,
 		HoursPerDay:           hoursPerDay,
@@ -51,14 +57,11 @@ func EmptyTimeSpan() *TimeSpan {
 
 func NewTimeSpan(days, hours, minutes, seconds, milliseconds Number) *TimeSpan {
 	return &TimeSpan{
-		value: time.Date(0,
-			0,
-			0,
-			hours.AsInt(),
-			minutes.AsInt(),
-			seconds.AsInt(),
-			millisecondsToNanoseconds(milliseconds).AsInt(),
-			time.UTC),
+		day:                   days.AsInt64(),
+		hour:                  hours.AsInt64(),
+		minute:                minutes.AsInt64(),
+		second:                seconds.AsInt64(),
+		millisecond:           milliseconds.AsInt64(),
 		isValid:               true,
 		MillisecondsPerSecond: millisecondsPerSecond,
 		HoursPerDay:           hoursPerDay,
@@ -74,8 +77,13 @@ func NewTimeSpan(days, hours, minutes, seconds, milliseconds Number) *TimeSpan {
 }
 
 func NewTimeSpanFromMilliseconds(milliseconds Number) *TimeSpan {
+	d, h, m, s, mi := readMilliseconds(milliseconds)
 	return &TimeSpan{
-		value:                 time.Unix(0, millisecondsToNanoseconds(milliseconds).AsInt64()),
+		day:                   d,
+		hour:                  h,
+		minute:                m,
+		second:                s,
+		millisecond:           mi,
 		isValid:               true,
 		MillisecondsPerSecond: millisecondsPerSecond,
 		HoursPerDay:           hoursPerDay,
@@ -90,26 +98,14 @@ func NewTimeSpanFromMilliseconds(milliseconds Number) *TimeSpan {
 	}
 }
 
-func NewTimeSpanFromISOString(isoString String) *TimeSpan {
+// create a new Time Span from the ISO String "Day.Hour:Minute:Second Millisecond"
+// values that not in the String was defined with 0
+func NewTimeSpanFromISOString(isoString String) (*TimeSpan, error) {
 	t, err := isoStringReader(isoString)
 	if err != nil {
-		println("Error on TimeSpan NewTimeSpanFromISOString: " + err.Error())
-		return EmptyTimeSpan()
+		return EmptyTimeSpan(), errors.New("Error on TimeSpan NewTimeSpanFromISOString: " + err.Error())
 	}
-	return &TimeSpan{
-		value:                 t,
-		isValid:               true,
-		MillisecondsPerSecond: millisecondsPerSecond,
-		HoursPerDay:           hoursPerDay,
-		MinutesPerDay:         minutesPerDay,
-		SecondsPerDay:         secondsPerDay,
-		MillisecondsPerDay:    millisecondsPerDay,
-		MinutesPerHour:        minutesPerHour,
-		SecondsPerHour:        secondsPerHour,
-		MillisecondsPerHour:   millisecondsPerHour,
-		SecondsPerMinute:      secondsPerMinute,
-		MillisecondsPerMinute: millisecondsPerMinute,
-	}
+	return t, nil
 }
 
 func (ts *TimeSpan) IsValid() bool {
@@ -117,25 +113,23 @@ func (ts *TimeSpan) IsValid() bool {
 }
 
 func (ts *TimeSpan) AsString() *String {
-	println("missing Implementation")
-	return EmptyString()
+	return isoStringWriter(*ts)
 }
 
 func (ts *TimeSpan) Day() *Number {
-	return NewNumber(ts.value.Day())
+	return NewNumber(ts.day)
 }
 func (ts *TimeSpan) Hour() *Number {
-	return NewNumber(ts.value.Hour())
+	return NewNumber(ts.hour)
 }
 func (ts *TimeSpan) Minute() *Number {
-	return NewNumber(ts.value.Minute())
+	return NewNumber(ts.minute)
 }
 func (ts *TimeSpan) Second() *Number {
-	return NewNumber(ts.value.Second())
+	return NewNumber(ts.second)
 }
 func (ts *TimeSpan) Millisecond() *Number {
-	tmp := ts.value.Nanosecond() / int(time.Millisecond)
-	return NewNumber(tmp)
+	return NewNumber(ts.millisecond)
 }
 
 /*
@@ -153,14 +147,7 @@ func (ts *TimeSpan) Subtract(duration TimeSpan) *TimeSpan {}
 func (ts *TimeSpan) Equals(duration TimeSpan) bool        {}
 */
 
-func millisecondsToNanoseconds(milliseconds Number) *Number {
-	nanoseconds := milliseconds.
-		Multiply(*NewNumber(time.Millisecond)).
-		Multiply(*NewNumber(time.Microsecond))
-	return nanoseconds
-}
-
-func isoStringReader(value String) (time.Time, error) {
+func isoStringReader(value String) (*TimeSpan, error) {
 	daySeperator := NewString(".")
 	timeSeperator := NewString(":")
 	msSeperator := NewString(" ")
@@ -172,7 +159,7 @@ func isoStringReader(value String) (time.Time, error) {
 
 	if !isInLengthBorders {
 		println("Error on TimeSpan isoStringReader: string is to short or to long")
-		return time.Now(), errors.New("string is to short or to long")
+		return EmptyTimeSpan(), errors.New("string is to short or to long")
 	}
 
 	var daySplit []*String
@@ -217,31 +204,38 @@ func isoStringReader(value String) (time.Time, error) {
 		millisecond = msSplit[1].AsNumber().AsInt()
 	}
 
-	return NewTimeSpan(), errors.New("missing Implementation")
+	return NewTimeSpan(
+		*NewNumber(day),
+		*NewNumber(hour),
+		*NewNumber(minute),
+		*NewNumber(second),
+		*NewNumber(millisecond),
+	), nil
 }
 
-/*
-func isoStringWriter(value *TimeSpan) *String {
-	tmp := EmptyString()
-	if daySplit != nil && len(daySplit) > 1 {
-		tmp = tmp.Concat(*daySplit[0].Concat(*daySeperator))
-	} else {
-		tmp = tmp.Concat(*NewString("0").Concat(*daySeperator))
-	}
-	if timeSplit != nil && len(timeSplit) > 2 {
-		tmp = tmp.
-			Concat(*timeSplit[0].Concat(*timeSeperator).
-				Concat(*timeSplit[1].Concat(*timeSeperator).
-					Concat(*timeSplit[2])))
-	} else {
-		tmp = tmp.
-			Concat(*NewString("00").Concat(*timeSeperator).
-				Concat(*NewString("00").Concat(*timeSeperator).
-					Concat(*NewString("00"))))
-	}
-	if msSplit != nil && len(msSplit) > 1 {
-		tmp = tmp.Concat(*msSeperator).Concat(*msSplit[1])
-	}
-	return tmp
+func isoStringWriter(value TimeSpan) *String {
+	return EmptyString()
 }
-*/
+
+func readMilliseconds(milliseconds Number) (day, hour, minute, second, millisecond int64) {
+	dayNumber := milliseconds.Divide(*millisecondsPerDay).Floor(*NewNumber(0))
+	hourNumber := milliseconds.Divide(*millisecondsPerHour).Floor(*NewNumber(0)).
+		Subtract(*dayNumber.Multiply(*millisecondsPerDay))
+	minuteNumber := milliseconds.Divide(*millisecondsPerMinute).Floor(*NewNumber(0)).
+		Subtract(*dayNumber.Multiply(*minutesPerDay)).
+		Subtract(*hourNumber.Multiply(*minutesPerHour))
+	secondNumber := milliseconds.Divide(*millisecondsPerSecond).Floor(*NewNumber(0)).
+		Subtract(*dayNumber.Multiply(*secondsPerDay)).
+		Subtract(*hourNumber.Multiply(*secondsPerHour)).
+		Subtract(*minuteNumber.Multiply(*secondsPerMinute))
+	millisecondNumber := milliseconds.
+		Subtract(*dayNumber.Multiply(*millisecondsPerDay)).
+		Subtract(*hourNumber.Multiply(*millisecondsPerHour)).
+		Subtract(*minuteNumber.Multiply(*millisecondsPerMinute)).
+		Subtract(*secondNumber.Multiply(*millisecondsPerSecond))
+	return dayNumber.AsInt64(),
+		hourNumber.AsInt64(),
+		minuteNumber.AsInt64(),
+		secondNumber.AsInt64(),
+		millisecondNumber.AsInt64()
+}
