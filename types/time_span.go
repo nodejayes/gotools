@@ -14,7 +14,11 @@ var secondsPerHour = minutesPerHour.Multiply(*NewNumber(60))
 var millisecondsPerHour = secondsPerHour.Multiply(*millisecondsPerSecond)
 var secondsPerMinute = secondsPerHour.Divide(*NewNumber(60))
 var millisecondsPerMinute = secondsPerMinute.Multiply(*millisecondsPerSecond)
+var daySeperator = NewString(".")
+var timeSeperator = NewString(":")
+var msSeperator = NewString(" ")
 
+// represent a Duration of Time from Days to Milliseconds
 type TimeSpan struct {
 	day                   int64
 	hour                  int64
@@ -34,6 +38,7 @@ type TimeSpan struct {
 	MillisecondsPerMinute *Number
 }
 
+// create a empty Time Span with zero values
 func EmptyTimeSpan() *TimeSpan {
 	return &TimeSpan{
 		day:                   0,
@@ -55,6 +60,7 @@ func EmptyTimeSpan() *TimeSpan {
 	}
 }
 
+// create a new TimeSpan from days, hours, minutes, seconds and milliseconds
 func NewTimeSpan(days, hours, minutes, seconds, milliseconds Number) *TimeSpan {
 	return &TimeSpan{
 		day:                   days.AsInt64(),
@@ -76,6 +82,7 @@ func NewTimeSpan(days, hours, minutes, seconds, milliseconds Number) *TimeSpan {
 	}
 }
 
+// create a TimeSpan from a duration in Milliseconds
 func NewTimeSpanFromMilliseconds(milliseconds Number) *TimeSpan {
 	d, h, m, s, mi := readMilliseconds(milliseconds)
 	return &TimeSpan{
@@ -98,9 +105,9 @@ func NewTimeSpanFromMilliseconds(milliseconds Number) *TimeSpan {
 	}
 }
 
-// create a new Time Span from the ISO String "Day.Hour:Minute:Second Millisecond"
+// create a new Time Span from the String "Day.Hour:Minute:Second Millisecond"
 // values that not in the String was defined with 0
-func NewTimeSpanFromISOString(isoString String) (*TimeSpan, error) {
+func NewTimeSpanFromString(isoString String) (*TimeSpan, error) {
 	t, err := isoStringReader(isoString)
 	if err != nil {
 		return EmptyTimeSpan(), errors.New("Error on TimeSpan NewTimeSpanFromISOString: " + err.Error())
@@ -108,50 +115,121 @@ func NewTimeSpanFromISOString(isoString String) (*TimeSpan, error) {
 	return t, nil
 }
 
+// is the Time Span a valid Time Span
 func (ts *TimeSpan) IsValid() bool {
 	return ts.isValid
 }
 
+// convert the TimeSpan to a String representation in the Format Day.Hour:Minute:Second Millisecond
 func (ts *TimeSpan) AsString() *String {
-	return isoStringWriter(*ts)
+	day := NewString(ts.day)
+	hour := NewString(ts.hour).PadLeft(*NewNumber(2), *NewString("0"))
+	minute := NewString(ts.minute).PadLeft(*NewNumber(2), *NewString("0"))
+	second := NewString(ts.second).PadLeft(*NewNumber(2), *NewString("0"))
+	millisecond := NewString(ts.millisecond).PadLeft(*NewNumber(3), *NewString("0"))
+	res := EmptyString().
+		Concat(*hour).Concat(*timeSeperator).
+		Concat(*minute).Concat(*timeSeperator).
+		Concat(*second)
+	if millisecond.AsNumber().IsAbove(ZERO) {
+		res = res.Concat(*msSeperator).Concat(*millisecond)
+	}
+	if day.AsNumber().IsAbove(ZERO) {
+		res = EmptyString().Concat(*day).Concat(*daySeperator).Concat(*res)
+	}
+	return res
 }
 
+// get the number of Days in the TimeSpan
 func (ts *TimeSpan) Day() *Number {
 	return NewNumber(ts.day)
 }
+
+// get the number of Hours in the TimeSpan
 func (ts *TimeSpan) Hour() *Number {
 	return NewNumber(ts.hour)
 }
+
+// get the number of Minutes in the TimeSpan
 func (ts *TimeSpan) Minute() *Number {
 	return NewNumber(ts.minute)
 }
+
+// get the number of Seconds in the TimeSpan
 func (ts *TimeSpan) Second() *Number {
 	return NewNumber(ts.second)
 }
+
+// get the number of Milliseconds in the TimeSpan
 func (ts *TimeSpan) Millisecond() *Number {
 	return NewNumber(ts.millisecond)
 }
 
-/*
-func (ts *TimeSpan) TotalDays() *Number         {}
-func (ts *TimeSpan) TotalHours() *Number        {}
-func (ts *TimeSpan) TotalMinutes() *Number      {}
-func (ts *TimeSpan) TotalSeconds() *Number      {}
-func (ts *TimeSpan) TotalMilliseconds() *Number {}
+// get the Sum of the Complete TimeSpan in Days
+func (ts *TimeSpan) TotalDays() *Number {
+	return ts.TotalMilliseconds().Divide(*millisecondsPerDay)
+}
 
-func (ts *TimeSpan) IsBefore(duration TimeSpan) bool      {}
-func (ts *TimeSpan) IsAfter(duration TimeSpan) bool       {}
-func (ts *TimeSpan) Negate() *TimeSpan                    {}
-func (ts *TimeSpan) Add(duration TimeSpan) *TimeSpan      {}
-func (ts *TimeSpan) Subtract(duration TimeSpan) *TimeSpan {}
-func (ts *TimeSpan) Equals(duration TimeSpan) bool        {}
-*/
+// get the Sum of the Complete TimeSpan in Hours
+func (ts *TimeSpan) TotalHours() *Number {
+	return ts.TotalMilliseconds().Divide(*millisecondsPerHour)
+}
+
+// get the Sum of the Complete TimeSpan in Minutes
+func (ts *TimeSpan) TotalMinutes() *Number {
+	return ts.TotalMilliseconds().Divide(*millisecondsPerMinute)
+}
+
+// get the Sum of the Complete TimeSpan in Seconds
+func (ts *TimeSpan) TotalSeconds() *Number {
+	return ts.TotalMilliseconds().Divide(*millisecondsPerSecond)
+}
+
+// get the Sum of the Complete TimeSpan in Milliseconds
+func (ts *TimeSpan) TotalMilliseconds() *Number {
+	return NewNumber(ts.day).Multiply(*millisecondsPerDay).Add(
+		*NewNumber(ts.hour).Multiply(*millisecondsPerHour).Add(
+			*NewNumber(ts.minute).Multiply(*millisecondsPerMinute).Add(
+				*NewNumber(ts.second).Multiply(*millisecondsPerSecond).Add(
+					*NewNumber(ts.millisecond)))))
+}
+
+// check is the TimeSpan Before the given TimeSpan
+func (ts *TimeSpan) IsBefore(duration TimeSpan) bool {
+	return ts.TotalMilliseconds().IsBelow(*duration.TotalMilliseconds())
+}
+
+// check is the TimeSpan After the given TimeSpan
+func (ts *TimeSpan) IsAfter(duration TimeSpan) bool {
+	return ts.TotalMilliseconds().IsAbove(*duration.TotalMilliseconds())
+}
+
+// check is the TimeSpan the given TimeSpan
+func (ts *TimeSpan) Equals(duration TimeSpan) bool {
+	return ts.TotalMilliseconds().Equals(*duration.TotalMilliseconds())
+}
+
+// add the given TimeSpan to the TimeSpan
+func (ts *TimeSpan) Add(duration TimeSpan) *TimeSpan {
+	return NewTimeSpanFromMilliseconds(*ts.TotalMilliseconds().Add(*duration.TotalMilliseconds()))
+}
+
+// remove the given TimeSpan to the TimeSpan
+func (ts *TimeSpan) Subtract(duration TimeSpan) *TimeSpan {
+	return NewTimeSpanFromMilliseconds(*ts.TotalMilliseconds().Subtract(*duration.TotalMilliseconds()))
+}
+
+// negate the TimeSpan day, hours, minutes, seconds and milliseconds
+func (ts *TimeSpan) Negate() *TimeSpan {
+	return NewTimeSpan(
+		*NewNumber(-ts.day),
+		*NewNumber(-ts.hour),
+		*NewNumber(-ts.minute),
+		*NewNumber(-ts.second),
+		*NewNumber(-ts.millisecond))
+}
 
 func isoStringReader(value String) (*TimeSpan, error) {
-	daySeperator := NewString(".")
-	timeSeperator := NewString(":")
-	msSeperator := NewString(" ")
-
 	isInLengthBorders := value.Length().IsAbove(*NewNumber(1)) && value.Length().IsBelow(*NewNumber(15))
 	daySeperatorExists := value.ContainsCount(*daySeperator).Equals(*NewNumber(1))
 	timeSeperatorExists := value.ContainsCount(*timeSeperator).Equals(*NewNumber(2))
@@ -178,8 +256,6 @@ func isoStringReader(value String) (*TimeSpan, error) {
 	if msSeperatorExists {
 		if timeSplit != nil && len(timeSplit) > 2 {
 			msSplit = timeSplit[2].Split(*msSeperator)
-		} else {
-			msSplit = value.Split(*msSeperator)
 		}
 	}
 	println(msSplit)
@@ -211,10 +287,6 @@ func isoStringReader(value String) (*TimeSpan, error) {
 		*NewNumber(second),
 		*NewNumber(millisecond),
 	), nil
-}
-
-func isoStringWriter(value TimeSpan) *String {
-	return EmptyString()
 }
 
 func readMilliseconds(milliseconds Number) (day, hour, minute, second, millisecond int64) {
