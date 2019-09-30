@@ -578,3 +578,16 @@ func TestNumber_Decrement(t *testing.T) {
 	g.Expect(n.AsInt()).
 		To(gomega.Equal(4))
 }
+
+func TestNumber_IsIn(t *testing.T) {
+	g := gomega.NewGomegaWithT(t)
+	list := []*Number{
+		NewNumber(1),
+		NewNumber(2),
+		NewNumber(3),
+	}
+	example1 := NewNumber(1)
+	example2 := NewNumber(10)
+	g.Expect(example1.IsIn(list)).To(gomega.BeTrue())
+	g.Expect(example2.IsIn(list)).To(gomega.BeFalse())
+}

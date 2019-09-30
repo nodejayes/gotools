@@ -416,3 +416,13 @@ func (i *Number) Increment() {
 func (i *Number) Decrement() {
 	i.value--
 }
+
+// check if the Number is in a List of Numbers
+func (i *Number) IsIn(list []*Number) bool {
+	for _, n := range list {
+		if i.Equals(*n) {
+			return true
+		}
+	}
+	return false
+}

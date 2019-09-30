@@ -1,6 +1,18 @@
 package types
 
-import "time"
+import (
+	"time"
+)
+
+var highMonths = []*Number{
+	NewNumber(1),
+	NewNumber(3),
+	NewNumber(5),
+	NewNumber(7),
+	NewNumber(8),
+	NewNumber(10),
+	NewNumber(12),
+}
 
 type DateTime struct {
 	day      int
@@ -37,6 +49,10 @@ func NewDateTime(location String, year, month, day, hour, minute, second, millis
 		location: loc,
 		isValid:  true,
 	}
+}
+
+func (dt *DateTime) IsValid() bool {
+	return dt.isValid
 }
 
 func (dt *DateTime) Day() *Number {
@@ -79,92 +95,63 @@ func (dt *DateTime) Clone() *DateTime {
 		*dt.Millisecond())
 }
 
-func (dt *DateTime) AddYears(years Number) *DateTime {
-	clone := dt.Clone()
-	clone.SetYear(years)
-	return clone
+func (dt *DateTime) AddYears(years Number) {
+	dt.SetYear(*dt.Year().Add(years))
 }
 
-func (dt *DateTime) AddMonths(months Number) *DateTime {
-	clone := dt.Clone()
-	appendTime(months, *NewNumber(12), clone.SetMonth)
-	return clone
+func (dt *DateTime) AddMonths(months Number) {
+	appendTime(dt.Month, months, *NewNumber(12), dt.AddYears, dt.SetMonth)
 }
 
-func (dt *DateTime) AddDays(days Number) *DateTime {
-	clone := dt.Clone()
-	appendTime(days, *NewNumber(30), clone.SetDay)
-	return clone
+func (dt *DateTime) AddDays(days Number) {
+	appendTime(dt.Day, days, *maxDayByMonth(*dt.Month(), *dt.Year()), dt.AddMonths, dt.SetDay)
 }
 
-func (dt *DateTime) AddHours(hours Number) *DateTime {
-	clone := dt.Clone()
-	appendTime(hours, *dt.time.HoursPerDay, clone.SetHour)
-	return clone
+func (dt *DateTime) AddHours(hours Number) {
+	appendTime(dt.Hour, hours, *dt.time.HoursPerDay, dt.AddDays, dt.SetHour)
 }
 
-func (dt *DateTime) AddMinutes(minutes Number) *DateTime {
-	clone := dt.Clone()
-	appendTime(minutes, *dt.time.MinutesPerDay, clone.SetMinute)
-	return clone
+func (dt *DateTime) AddMinutes(minutes Number) {
+	appendTime(dt.Minute, minutes, *dt.time.MinutesPerHour, dt.AddHours, dt.SetMinute)
 }
 
-func (dt *DateTime) AddSeconds(seconds Number) *DateTime {
-	clone := dt.Clone()
-	appendTime(seconds, *dt.time.SecondsPerMinute, clone.SetSecond)
-	return clone
+func (dt *DateTime) AddSeconds(seconds Number) {
+	appendTime(dt.Second, seconds, *dt.time.SecondsPerMinute, dt.AddMinutes, dt.SetSecond)
 }
 
-func (dt *DateTime) AddMilliseconds(milliseconds Number) *DateTime {
-	clone := dt.Clone()
-	appendTime(milliseconds, *dt.time.MillisecondsPerSecond, clone.SetSecond)
-	return clone
+func (dt *DateTime) AddMilliseconds(milliseconds Number) {
+	appendTime(dt.Millisecond, milliseconds, *dt.time.MillisecondsPerSecond, dt.AddSeconds, dt.SetMillisecond)
 }
 
-func (dt *DateTime) SetYear(year Number) *DateTime {
-	clone := dt.Clone()
-	clone.year = year.AsInt()
-	return clone
+func (dt *DateTime) SetYear(year Number) {
+	dt.year = year.AsInt()
 }
 
-func (dt *DateTime) SetMonth(month Number) *DateTime {
-	clone := dt.Clone()
-	clone.month = month.AsInt()
-	return clone
+func (dt *DateTime) SetMonth(month Number) {
+	dt.month = month.AsInt()
 }
 
-func (dt *DateTime) SetDay(day Number) *DateTime {
-	clone := dt.Clone()
-	clone.day = day.AsInt()
-	return clone
+func (dt *DateTime) SetDay(day Number) {
+	dt.day = day.AsInt()
 }
 
-func (dt *DateTime) SetHour(hour Number) *DateTime {
-	clone := dt.Clone()
-	clone.time.hour = hour.AsInt64()
-	return clone
+func (dt *DateTime) SetHour(hour Number) {
+	dt.time.hour = hour.AsInt64()
 }
 
-func (dt *DateTime) SetMinute(minute Number) *DateTime {
-	clone := dt.Clone()
-	clone.time.minute = minute.AsInt64()
-	return clone
+func (dt *DateTime) SetMinute(minute Number) {
+	dt.time.minute = minute.AsInt64()
 }
 
-func (dt *DateTime) SetSecond(second Number) *DateTime {
-	clone := dt.Clone()
-	clone.time.second = second.AsInt64()
-	return clone
+func (dt *DateTime) SetSecond(second Number) {
+	dt.time.second = second.AsInt64()
 }
 
-func (dt *DateTime) SetMillisecond(millisecond Number) *DateTime {
-	clone := dt.Clone()
-	clone.time.millisecond = millisecond.AsInt64()
-	return clone
+func (dt *DateTime) SetMillisecond(millisecond Number) {
+	dt.time.millisecond = millisecond.AsInt64()
 }
 
-/*
-func (dt *DateTime) InZone(location String) *DateTime {
+func (dt *DateTime) ToZone(location String) *DateTime {
 	loc, err := time.LoadLocation(location.value)
 	if err != nil {
 		println("Error on DateTime NewDateTime: ", err.Error())
@@ -172,18 +159,63 @@ func (dt *DateTime) InZone(location String) *DateTime {
 	}
 	clone := dt.Clone()
 	if dt.location != loc {
-		clone.
+		clone.AddSeconds(*getUTCOffset(clone, loc))
+		clone.location = loc
 	}
 	return clone
 }
-*/
 
-func appendTime(value, factor Number, setter func(Number) *DateTime) {
-	border := factor.Subtract(*NewNumber(1))
-	if value.IsAbove(*border) {
-		offset := value.Divide(factor).Floor(ZERO)
-		setter(*value.Subtract(*offset.Multiply(factor)))
-	} else {
-		setter(value)
+func appendTime(getter func() *Number, value, border Number, addFn, setFn func(Number)) {
+	toAdd := getter().Add(value)
+	if toAdd.IsAbove(border) || toAdd.IsBelow(ZERO) {
+		offset := toAdd.Divide(border).Floor(ZERO)
+		remaind := toAdd.Subtract(*offset.Multiply(border))
+		addFn(*offset)
+		setFn(*remaind)
+		return
 	}
+	setFn(*toAdd)
+}
+
+func maxDayByMonth(month, year Number) *Number {
+	isLeapYear := year.Modulo(*NewNumber(4)).Equals(ZERO)
+	isFebruary := month.Equals(*NewNumber(2))
+	if isLeapYear && isFebruary {
+		return NewNumber(29)
+	} else if isFebruary {
+		return NewNumber(28)
+	}
+	if month.IsIn(highMonths) {
+		return NewNumber(31)
+	}
+	return NewNumber(30)
+}
+
+func getUTCOffset(dt *DateTime, target *time.Location) *Number {
+	_, offset := time.Date(
+		dt.Year().AsInt(),
+		time.Month(dt.Month().AsInt()),
+		dt.Day().AsInt(),
+		dt.Hour().AsInt(),
+		dt.Minute().AsInt(),
+		dt.Second().AsInt(),
+		0,
+		dt.location,
+	).Zone()
+	_, offset2 := time.Date(
+		dt.Year().AsInt(),
+		time.Month(dt.Month().AsInt()),
+		dt.Day().AsInt(),
+		dt.Hour().AsInt(),
+		dt.Minute().AsInt(),
+		dt.Second().AsInt(),
+		0,
+		target,
+	).Zone()
+	if offset > 0 && offset2 == 0 {
+		return NewNumber(-offset)
+	} else if offset2 > 0 && offset == 0 {
+		return NewNumber(offset2)
+	}
+	return NewNumber(0)
 }
