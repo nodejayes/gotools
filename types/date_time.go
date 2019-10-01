@@ -165,6 +165,16 @@ func (dt *DateTime) ToZone(location String) *DateTime {
 	return clone
 }
 
+func (dt *DateTime) Equals(v DateTime) bool {
+	return dt.Year().Equals(*v.Year()) &&
+		dt.Month().Equals(*v.Month()) &&
+		dt.Day().Equals(*v.Day()) &&
+		dt.Hour().Equals(*v.Hour()) &&
+		dt.Minute().Equals(*v.Minute()) &&
+		dt.Second().Equals(*v.Second()) &&
+		dt.Millisecond().Equals(*v.Millisecond())
+}
+
 func appendTime(getter func() *Number, value, border Number, addFn, setFn func(Number)) {
 	toAdd := getter().Add(value)
 	if toAdd.IsAbove(border) || toAdd.IsBelow(ZERO) {

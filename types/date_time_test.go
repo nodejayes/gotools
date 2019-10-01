@@ -363,3 +363,21 @@ func TestDateTime_ToZone(t *testing.T) {
 	UTCtmp2 := CETDate.ToZone(*NewString("notexists"))
 	g.Expect(UTCtmp2.IsValid()).To(gomega.BeFalse())
 }
+
+func TestDateTime_Equals(t *testing.T) {
+	g := gomega.NewGomegaWithT(t)
+	example := NewDateTime(
+		*NewString("UTC"),
+		*NewNumber(2019),
+		*NewNumber(5),
+		*NewNumber(1),
+		*NewNumber(18),
+		*NewNumber(15),
+		*NewNumber(1),
+		*NewNumber(1),
+	)
+	example2 := example.Clone()
+	example2.AddSeconds(*NewNumber(10))
+	g.Expect(example.Equals(*example)).To(gomega.BeTrue())
+	g.Expect(example.Equals(*example2)).To(gomega.BeFalse())
+}
