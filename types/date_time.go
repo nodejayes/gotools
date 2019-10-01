@@ -170,6 +170,9 @@ func appendTime(getter func() *Number, value, border Number, addFn, setFn func(N
 	if toAdd.IsAbove(border) || toAdd.IsBelow(ZERO) {
 		offset := toAdd.Divide(border).Floor(ZERO)
 		remaind := toAdd.Subtract(*offset.Multiply(border))
+		if remaind.Equals(ZERO) {
+			remaind = NewNumber(1)
+		}
 		addFn(*offset)
 		setFn(*remaind)
 		return
