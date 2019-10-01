@@ -180,7 +180,8 @@
     <MESSAGE value="WIP: Subtract -Days" />
     <MESSAGE value="fix zero Days an add negative days" />
     <MESSAGE value="add Equals DateTime" />
-    <option name="LAST_COMMIT_MESSAGE" value="add Equals DateTime" />
+    <MESSAGE value="add IsBefore and IsAfter and AsUnixTimestamp DateTime" />
+    <option name="LAST_COMMIT_MESSAGE" value="add IsBefore and IsAfter and AsUnixTimestamp DateTime" />
   </component>
   <component name="WindowStateProjectService">
     <state x="414" y="177" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1569871723027">
@@ -191,22 +192,22 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="727" height="464" key="DebuggerActiveHint/0.0.1920.1040@0.0.1920.1040" timestamp="1569690060226" />
-    <state width="1877" height="282" key="GridCell.Tab.0.bottom" timestamp="1569960453869">
+    <state width="1877" height="282" key="GridCell.Tab.0.bottom" timestamp="1569960565541">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1569960453869" />
-    <state width="1877" height="282" key="GridCell.Tab.0.center" timestamp="1569960453868">
+    <state width="1877" height="282" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1569960565541" />
+    <state width="1877" height="282" key="GridCell.Tab.0.center" timestamp="1569960565541">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1569960453868" />
-    <state width="1877" height="282" key="GridCell.Tab.0.left" timestamp="1569960453868">
+    <state width="1877" height="282" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1569960565541" />
+    <state width="1877" height="282" key="GridCell.Tab.0.left" timestamp="1569960565541">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1569960453868" />
-    <state width="1877" height="282" key="GridCell.Tab.0.right" timestamp="1569960453869">
+    <state width="1877" height="282" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1569960565541" />
+    <state width="1877" height="282" key="GridCell.Tab.0.right" timestamp="1569960565541">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1569960453869" />
+    <state width="1877" height="282" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1569960565541" />
     <state width="1877" height="402" key="GridCell.Tab.1.bottom" timestamp="1569956396025">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -260,7 +261,7 @@
     </watches-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/gotools$TestAll.out" NAME="TestAll Coverage Results" MODIFIED="1569960453856" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/gotools$TestAll.out" NAME="TestAll Coverage Results" MODIFIED="1569960549520" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/gotools$Test_types.out" NAME="Test types Coverage Results" MODIFIED="1569696874183" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/gotools$TestString_Insert_in_github_com_nodejayes_gotools_types.out" NAME="TestString_Insert in github.com/nodejayes/gotools/types Coverage Results" MODIFIED="1569531692587" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>

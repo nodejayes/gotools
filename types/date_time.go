@@ -182,6 +182,24 @@ func (dt *DateTime) AsUnixTimestamp() *Number {
 	return NewNumber(d.UnixNano() / 1000000000)
 }
 
+func (dt *DateTime) AsString(fmt *String) *String {
+	fmt = fmt.Replace(*NewString("YYYY"), *NewString(dt.Year()).
+		PadLeft(*NewNumber(4), *NewString("0")))
+	fmt = fmt.Replace(*NewString("MM"), *NewString(dt.Month()).
+		PadLeft(*NewNumber(2), *NewString("0")))
+	fmt = fmt.Replace(*NewString("DD"), *NewString(dt.Day()).
+		PadLeft(*NewNumber(2), *NewString("0")))
+	fmt = fmt.Replace(*NewString("HH"), *NewString(dt.Hour()).
+		PadLeft(*NewNumber(2), *NewString("0")))
+	fmt = fmt.Replace(*NewString("mm"), *NewString(dt.Minute()).
+		PadLeft(*NewNumber(2), *NewString("0")))
+	fmt = fmt.Replace(*NewString("ss"), *NewString(dt.Second()).
+		PadLeft(*NewNumber(2), *NewString("0")))
+	fmt = fmt.Replace(*NewString("fff"), *NewString(dt.Millisecond()).
+		PadLeft(*NewNumber(3), *NewString("0")))
+	return fmt
+}
+
 func (dt *DateTime) IsBefore(v *DateTime) bool {
 	return dt.AsUnixTimestamp().IsBelow(*v.AsUnixTimestamp())
 }
