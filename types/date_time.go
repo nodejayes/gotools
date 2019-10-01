@@ -104,7 +104,7 @@ func (dt *DateTime) AddMonths(months Number) {
 }
 
 func (dt *DateTime) AddDays(days Number) {
-	appendTime(dt.Day, days, *maxDayByMonth(*dt.Month(), *dt.Year()), dt.AddMonths, dt.SetDay)
+	appendTime(dt.Day, days, *maxDayByMonth(dt.Month(), dt.Year()), dt.AddMonths, dt.SetDay)
 }
 
 func (dt *DateTime) AddHours(hours Number) {
@@ -175,6 +175,21 @@ func (dt *DateTime) Equals(v DateTime) bool {
 		dt.Millisecond().Equals(*v.Millisecond())
 }
 
+func (dt *DateTime) AsUnixTimestamp() *Number {
+	d := time.Date(
+		dt.Year().AsInt(), time.Month(dt.Month().AsInt()), dt.Day().AsInt(),
+		dt.Hour().AsInt(), dt.Minute().AsInt(), dt.Second().AsInt(), 0, dt.location)
+	return NewNumber(d.UnixNano() / 1000000000)
+}
+
+func (dt *DateTime) IsBefore(v *DateTime) bool {
+	return dt.AsUnixTimestamp().IsBelow(*v.AsUnixTimestamp())
+}
+
+func (dt *DateTime) IsAfter(v *DateTime) bool {
+	return dt.AsUnixTimestamp().IsAbove(*v.AsUnixTimestamp())
+}
+
 func appendTime(getter func() *Number, value, border Number, addFn, setFn func(Number)) {
 	toAdd := getter().Add(value)
 	if toAdd.IsAbove(border) || toAdd.IsBelow(ZERO) {
@@ -190,8 +205,12 @@ func appendTime(getter func() *Number, value, border Number, addFn, setFn func(N
 	setFn(*toAdd)
 }
 
-func maxDayByMonth(month, year Number) *Number {
-	isLeapYear := year.Modulo(*NewNumber(4)).Equals(ZERO)
+func isLeapYear(year *Number) bool {
+	return year.Modulo(*NewNumber(4)).Equals(ZERO)
+}
+
+func maxDayByMonth(month, year *Number) *Number {
+	isLeapYear := isLeapYear(year)
 	isFebruary := month.Equals(*NewNumber(2))
 	if isLeapYear && isFebruary {
 		return NewNumber(29)
@@ -227,8 +246,6 @@ func getUTCOffset(dt *DateTime, target *time.Location) *Number {
 	).Zone()
 	if offset > 0 && offset2 == 0 {
 		return NewNumber(-offset)
-	} else if offset2 > 0 && offset == 0 {
-		return NewNumber(offset2)
 	}
-	return NewNumber(0)
+	return NewNumber(offset2)
 }

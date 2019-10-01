@@ -3,6 +3,7 @@ package types
 import (
 	"github.com/onsi/gomega"
 	"testing"
+	"time"
 )
 
 func TestNewDateTime(t *testing.T) {
@@ -380,4 +381,67 @@ func TestDateTime_Equals(t *testing.T) {
 	example2.AddSeconds(*NewNumber(10))
 	g.Expect(example.Equals(*example)).To(gomega.BeTrue())
 	g.Expect(example.Equals(*example2)).To(gomega.BeFalse())
+}
+
+func TestDateTime_IsBefore(t *testing.T) {
+	g := gomega.NewGomegaWithT(t)
+	example1 := NewDateTime(
+		*NewString("UTC"),
+		*NewNumber(2019),
+		*NewNumber(5),
+		*NewNumber(1),
+		*NewNumber(18),
+		*NewNumber(15),
+		*NewNumber(1),
+		*NewNumber(1),
+	)
+	example2 := example1.Clone()
+	example2.AddSeconds(*NewNumber(10))
+	g.Expect(example1.IsBefore(example2)).To(gomega.BeTrue())
+	g.Expect(example1.IsBefore(example1)).To(gomega.BeFalse())
+	g.Expect(example2.IsBefore(example1)).To(gomega.BeFalse())
+}
+
+func TestDateTime_IsAfter(t *testing.T) {
+	g := gomega.NewGomegaWithT(t)
+	example1 := NewDateTime(
+		*NewString("UTC"),
+		*NewNumber(2019),
+		*NewNumber(5),
+		*NewNumber(1),
+		*NewNumber(18),
+		*NewNumber(15),
+		*NewNumber(1),
+		*NewNumber(1),
+	)
+	example2 := example1.Clone()
+	example2.AddSeconds(*NewNumber(10))
+	g.Expect(example1.IsAfter(example2)).To(gomega.BeFalse())
+	g.Expect(example1.IsAfter(example1)).To(gomega.BeFalse())
+	g.Expect(example2.IsAfter(example1)).To(gomega.BeTrue())
+}
+
+func TestDateTime_AsUnixTimestamp(t *testing.T) {
+	g := gomega.NewGomegaWithT(t)
+	loc, err := time.LoadLocation("UTC")
+	g.Expect(err).To(gomega.BeNil())
+	example := NewDateTime(
+		*NewString("UTC"),
+		*NewNumber(2019),
+		*NewNumber(5),
+		*NewNumber(1),
+		*NewNumber(18),
+		*NewNumber(15),
+		*NewNumber(1),
+		*NewNumber(1),
+	)
+	println(example.AsUnixTimestamp().AsInt64())
+	target := time.Unix(example.AsUnixTimestamp().AsInt64(), 0)
+	target = target.In(loc)
+	g.Expect(target.Year()).To(gomega.Equal(example.Year().AsInt()))
+	g.Expect(target.Month()).To(gomega.Equal(time.Month(example.Month().AsInt())))
+	g.Expect(target.Day()).To(gomega.Equal(example.Day().AsInt()))
+	g.Expect(target.Hour()).To(gomega.Equal(example.Hour().AsInt()))
+	g.Expect(target.Minute()).To(gomega.Equal(example.Minute().AsInt()))
+	g.Expect(target.Second()).To(gomega.Equal(example.Second().AsInt()))
 }
