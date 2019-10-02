@@ -3,8 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="ff1b7be7-7005-4269-af52-115c27a1f174" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/types/string.go" beforeDir="false" afterPath="$PROJECT_DIR$/types/string.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/types/string_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/types/string_test.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/types/date_time.go" beforeDir="false" afterPath="$PROJECT_DIR$/types/date_time.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/types/date_time_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/types/date_time_test.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -12,7 +12,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageViewManager">
-    <option name="myElementSize" value="511" />
+    <option name="myElementSize" value="512" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -23,6 +23,11 @@
   </component>
   <component name="GOROOT" path="C:\Go" />
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1RNzd0gWGdIxBxHjkXxAezpGiOF" />
@@ -37,6 +42,7 @@
   <component name="PropertiesComponent">
     <property name="DefaultGoTemplateProperty" value="Go File" />
     <property name="GO_FMT" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="configurable.Global.GOPATH.is.expanded" value="true" />
     <property name="configurable.Module.GOPATH.is.expanded" value="false" />
@@ -72,8 +78,8 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Go Test.Test types">
-    <configuration name="Test types" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true">
+  <component name="RunManager" selected="Go Test.TestAll">
+    <configuration name="TestDateTime_AddDays in github.com/nodejayes/gotools/types" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
       <module name="gotools" />
       <working_directory value="$PROJECT_DIR$/types" />
       <framework value="gotest" />
@@ -81,9 +87,10 @@
       <package value="github.com/nodejayes/gotools/types" />
       <directory value="$PROJECT_DIR$/" />
       <filePath value="$PROJECT_DIR$/" />
+      <pattern value="^TestDateTime_AddDays$" />
       <method v="2" />
     </configuration>
-    <configuration name="TestString_EndWith in github.com/nodejayes/gotools/types" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+    <configuration name="TestDateTime_AddHours in github.com/nodejayes/gotools/types" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
       <module name="gotools" />
       <working_directory value="$PROJECT_DIR$/types" />
       <framework value="gotest" />
@@ -91,10 +98,10 @@
       <package value="github.com/nodejayes/gotools/types" />
       <directory value="$PROJECT_DIR$/" />
       <filePath value="$PROJECT_DIR$/" />
-      <pattern value="^TestString_EndWith$" />
+      <pattern value="^TestDateTime_AddHours$" />
       <method v="2" />
     </configuration>
-    <configuration name="TestString_RegularExpression in github.com/nodejayes/gotools/types" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+    <configuration name="TestDateTime_AddMinutes in github.com/nodejayes/gotools/types" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
       <module name="gotools" />
       <working_directory value="$PROJECT_DIR$/types" />
       <framework value="gotest" />
@@ -102,10 +109,10 @@
       <package value="github.com/nodejayes/gotools/types" />
       <directory value="$PROJECT_DIR$/" />
       <filePath value="$PROJECT_DIR$/" />
-      <pattern value="^TestString_RegularExpression$" />
+      <pattern value="^TestDateTime_AddMinutes$" />
       <method v="2" />
     </configuration>
-    <configuration name="TestString_StartWith in github.com/nodejayes/gotools/types" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+    <configuration name="TestDateTime_AddSeconds in github.com/nodejayes/gotools/types" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
       <module name="gotools" />
       <working_directory value="$PROJECT_DIR$/types" />
       <framework value="gotest" />
@@ -113,10 +120,10 @@
       <package value="github.com/nodejayes/gotools/types" />
       <directory value="$PROJECT_DIR$/" />
       <filePath value="$PROJECT_DIR$/" />
-      <pattern value="^TestString_StartWith$" />
+      <pattern value="^TestDateTime_AddSeconds$" />
       <method v="2" />
     </configuration>
-    <configuration name="TestString_TrimRight in github.com/nodejayes/gotools/types" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+    <configuration name="TestDateTime_ToZone in github.com/nodejayes/gotools/types" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
       <module name="gotools" />
       <working_directory value="$PROJECT_DIR$/types" />
       <framework value="gotest" />
@@ -124,25 +131,28 @@
       <package value="github.com/nodejayes/gotools/types" />
       <directory value="$PROJECT_DIR$/" />
       <filePath value="$PROJECT_DIR$/" />
-      <pattern value="^TestString_TrimRight$" />
+      <pattern value="^TestDateTime_ToZone$" />
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Go Test.Test types" />
-      <item itemvalue="Go Test.TestString_StartWith in github.com/nodejayes/gotools/types" />
-      <item itemvalue="Go Test.TestString_EndWith in github.com/nodejayes/gotools/types" />
-      <item itemvalue="Go Test.TestString_TrimRight in github.com/nodejayes/gotools/types" />
-      <item itemvalue="Go Test.TestString_RegularExpression in github.com/nodejayes/gotools/types" />
+      <item itemvalue="Go Test.TestAll" />
+      <item itemvalue="Go Test.TestDateTime_AddDays in github.com/nodejayes/gotools/types" />
+      <item itemvalue="Go Test.TestDateTime_AddHours in github.com/nodejayes/gotools/types" />
+      <item itemvalue="Go Test.TestDateTime_AddMinutes in github.com/nodejayes/gotools/types" />
+      <item itemvalue="Go Test.TestDateTime_AddSeconds in github.com/nodejayes/gotools/types" />
+      <item itemvalue="Go Test.TestDateTime_ToZone in github.com/nodejayes/gotools/types" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Go Test.Test types" />
-        <item itemvalue="Go Test.TestString_RegularExpression in github.com/nodejayes/gotools/types" />
-        <item itemvalue="Go Test.TestString_TrimRight in github.com/nodejayes/gotools/types" />
-        <item itemvalue="Go Test.TestString_EndWith in github.com/nodejayes/gotools/types" />
-        <item itemvalue="Go Test.TestString_StartWith in github.com/nodejayes/gotools/types" />
+        <item itemvalue="Go Test.TestDateTime_AddDays in github.com/nodejayes/gotools/types" />
+        <item itemvalue="Go Test.TestDateTime_ToZone in github.com/nodejayes/gotools/types" />
+        <item itemvalue="Go Test.TestDateTime_AddSeconds in github.com/nodejayes/gotools/types" />
+        <item itemvalue="Go Test.TestDateTime_AddMinutes in github.com/nodejayes/gotools/types" />
       </list>
     </recent_temporary>
+  </component>
+  <component name="StructureViewFactory">
+    <option name="ACTIVE_ACTIONS" value=",Show Private Members" />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
@@ -163,49 +173,58 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="WIP string implementations" />
     <MESSAGE value="WIP string implementation" />
-    <option name="LAST_COMMIT_MESSAGE" value="WIP string implementation" />
+    <MESSAGE value="finish String implementation" />
+    <MESSAGE value="WIP" />
+    <MESSAGE value="TimeSpan finish" />
+    <MESSAGE value="WIP DateTime" />
+    <MESSAGE value="WIP: Subtract -Days" />
+    <MESSAGE value="fix zero Days an add negative days" />
+    <MESSAGE value="add Equals DateTime" />
+    <MESSAGE value="add IsBefore and IsAfter and AsUnixTimestamp DateTime" />
+    <MESSAGE value="add simple AsString with Format" />
+    <option name="LAST_COMMIT_MESSAGE" value="add simple AsString with Format" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="414" y="177" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1569523945150">
+    <state x="414" y="177" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1569871723027">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="414" y="177" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1569523945150" />
-    <state width="727" height="464" key="DebuggerActiveHint" timestamp="1569528897116">
+    <state x="414" y="177" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1569871723027" />
+    <state width="727" height="464" key="DebuggerActiveHint" timestamp="1569690060226">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="727" height="464" key="DebuggerActiveHint/0.0.1920.1040@0.0.1920.1040" timestamp="1569528897116" />
-    <state width="1877" height="282" key="GridCell.Tab.0.bottom" timestamp="1569615613564">
+    <state width="727" height="464" key="DebuggerActiveHint/0.0.1920.1040@0.0.1920.1040" timestamp="1569690060226" />
+    <state width="1877" height="282" key="GridCell.Tab.0.bottom" timestamp="1570042015759">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1569615613564" />
-    <state width="1877" height="282" key="GridCell.Tab.0.center" timestamp="1569615613564">
+    <state width="1877" height="282" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1570042015759" />
+    <state width="1877" height="282" key="GridCell.Tab.0.center" timestamp="1570042015759">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1569615613564" />
-    <state width="1877" height="282" key="GridCell.Tab.0.left" timestamp="1569615613564">
+    <state width="1877" height="282" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1570042015759" />
+    <state width="1877" height="282" key="GridCell.Tab.0.left" timestamp="1570042015759">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1569615613564" />
-    <state width="1877" height="282" key="GridCell.Tab.0.right" timestamp="1569615613564">
+    <state width="1877" height="282" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1570042015759" />
+    <state width="1877" height="282" key="GridCell.Tab.0.right" timestamp="1570042015759">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1569615613564" />
-    <state width="1877" height="348" key="GridCell.Tab.1.bottom" timestamp="1569615525076">
+    <state width="1877" height="282" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1570042015759" />
+    <state width="1877" height="402" key="GridCell.Tab.1.bottom" timestamp="1569963125129">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="348" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1569615525076" />
-    <state width="1877" height="348" key="GridCell.Tab.1.center" timestamp="1569615525076">
+    <state width="1877" height="402" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1569963125129" />
+    <state width="1877" height="402" key="GridCell.Tab.1.center" timestamp="1569963125129">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="348" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1569615525076" />
-    <state width="1877" height="348" key="GridCell.Tab.1.left" timestamp="1569615525076">
+    <state width="1877" height="402" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1569963125129" />
+    <state width="1877" height="402" key="GridCell.Tab.1.left" timestamp="1569963125129">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="348" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1569615525076" />
-    <state width="1877" height="348" key="GridCell.Tab.1.right" timestamp="1569615525076">
+    <state width="1877" height="402" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1569963125129" />
+    <state width="1877" height="402" key="GridCell.Tab.1.right" timestamp="1569963125129">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="348" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1569615525076" />
+    <state width="1877" height="402" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1569963125129" />
     <state x="710" y="234" key="RollbackChangesDialog" timestamp="1569529233470">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -214,10 +233,14 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="447" y="165" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1569523869405" />
-    <state x="552" y="256" key="Vcs.Push.Dialog.v2" timestamp="1569531759121">
+    <state x="552" y="256" key="Vcs.Push.Dialog.v2" timestamp="1569961632888">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="256" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1569531759121" />
+    <state x="552" y="256" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1569961632888" />
+    <state x="665" y="202" width="589" height="636" key="find.popup" timestamp="1569695390377">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="665" y="202" width="589" height="636" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1569695390377" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -229,9 +252,18 @@
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+    <watches-manager>
+      <configuration name="GoTestRunConfiguration">
+        <watch expression="base.Day().AsInt()" language="go" />
+        <watch expression="base.Month().AsInt()" language="go" />
+        <watch expression="base.Year().AsInt()" language="go" />
+        <watch expression="getter().AsInt()" language="go" />
+      </configuration>
+    </watches-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/gotools$Test_types.out" NAME="Test types Coverage Results" MODIFIED="1569615613549" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/gotools$TestAll.out" NAME="TestAll Coverage Results" MODIFIED="1569960549520" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/gotools$Test_types.out" NAME="Test types Coverage Results" MODIFIED="1569696874183" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/gotools$TestString_Insert_in_github_com_nodejayes_gotools_types.out" NAME="TestString_Insert in github.com/nodejayes/gotools/types Coverage Results" MODIFIED="1569531692587" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>

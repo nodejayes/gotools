@@ -1,0 +1,12 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="TestAll" type="GoTestRunConfiguration" factoryName="Go Test">
+    <module name="gotools" />
+    <working_directory value="$PROJECT_DIR$/types" />
+    <framework value="gotest" />
+    <kind value="PACKAGE" />
+    <package value="github.com/nodejayes/gotools/types" />
+    <directory value="$PROJECT_DIR$/" />
+    <filePath value="$PROJECT_DIR$/" />
+    <method v="2" />
+  </configuration>
+</component>
