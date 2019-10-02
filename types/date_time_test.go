@@ -448,7 +448,9 @@ func TestDateTime_AsUnixTimestamp(t *testing.T) {
 
 func TestDateTime_AsString(t *testing.T) {
 	g := gomega.NewGomegaWithT(t)
-	fmt := NewString("YYYY-MM-DD HH:mm:ss.fff")
+	fmt1 := NewString("YYYY-MM-DD HH:mm:ss.fff")
+	fmt2 := NewString("YY-M-D H:m:s.ff")
+	fmt3 := NewString("YY-M-D H:m:s.f")
 	example := NewDateTime(
 		*NewString("UTC"),
 		*NewNumber(2019),
@@ -459,5 +461,7 @@ func TestDateTime_AsString(t *testing.T) {
 		*NewNumber(1),
 		*NewNumber(1),
 	)
-	g.Expect(example.AsString(fmt).AsString()).To(gomega.Equal("2019-05-01 18:15:01.001"))
+	g.Expect(example.AsString(fmt1).AsString()).To(gomega.Equal("2019-05-01 18:15:01.001"))
+	g.Expect(example.AsString(fmt2).AsString()).To(gomega.Equal("19-5-1 18:15:1.01"))
+	g.Expect(example.AsString(fmt3).AsString()).To(gomega.Equal("19-5-1 18:15:1.1"))
 }

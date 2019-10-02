@@ -185,18 +185,29 @@ func (dt *DateTime) AsUnixTimestamp() *Number {
 func (dt *DateTime) AsString(fmt *String) *String {
 	fmt = fmt.Replace(*NewString("YYYY"), *NewString(dt.Year()).
 		PadLeft(*NewNumber(4), *NewString("0")))
+	fmt = fmt.Replace(*NewString("YY"), *NewString(dt.Year()).
+		SubString(*NewNumber(2), *NewNumber(2)).
+		PadLeft(*NewNumber(2), *NewString("0")))
 	fmt = fmt.Replace(*NewString("MM"), *NewString(dt.Month()).
 		PadLeft(*NewNumber(2), *NewString("0")))
+	fmt = fmt.Replace(*NewString("M"), *NewString(dt.Month()))
 	fmt = fmt.Replace(*NewString("DD"), *NewString(dt.Day()).
 		PadLeft(*NewNumber(2), *NewString("0")))
+	fmt = fmt.Replace(*NewString("D"), *NewString(dt.Day()))
 	fmt = fmt.Replace(*NewString("HH"), *NewString(dt.Hour()).
 		PadLeft(*NewNumber(2), *NewString("0")))
+	fmt = fmt.Replace(*NewString("H"), *NewString(dt.Hour()))
 	fmt = fmt.Replace(*NewString("mm"), *NewString(dt.Minute()).
 		PadLeft(*NewNumber(2), *NewString("0")))
+	fmt = fmt.Replace(*NewString("m"), *NewString(dt.Minute()))
 	fmt = fmt.Replace(*NewString("ss"), *NewString(dt.Second()).
 		PadLeft(*NewNumber(2), *NewString("0")))
+	fmt = fmt.Replace(*NewString("s"), *NewString(dt.Second()))
 	fmt = fmt.Replace(*NewString("fff"), *NewString(dt.Millisecond()).
 		PadLeft(*NewNumber(3), *NewString("0")))
+	fmt = fmt.Replace(*NewString("ff"), *NewString(dt.Millisecond()).
+		PadLeft(*NewNumber(2), *NewString("0")))
+	fmt = fmt.Replace(*NewString("f"), *NewString(dt.Millisecond()))
 	return fmt
 }
 
